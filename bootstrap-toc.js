@@ -73,14 +73,19 @@ $(function() {
     return $context;
   };
 
+  var generateNavItem = function(header) {
+    var anchor = generateAnchor(el);
+    var text = $(el).text();
+    return $('<li><a href="#' + anchor + '">' + text + '</a></li>');
+  };
+
   var init = function($base) {
     var $context = $('<ul></ul>');
     $base.append($context);
 
     $('h1,h2,h3,h4').each(function(i, el) {
-      var anchor = generateAnchor(el);
-      var text = $(el).text();
-      var $newNav = $('<li><a href="#' + anchor + '">' + text + '</a></li>');
+      var $newNav = generateNavItem(el);
+
       var navLevel = parseInt(el.tagName.charAt(1), 10);
       $newNav.data('nav-level', navLevel);
 

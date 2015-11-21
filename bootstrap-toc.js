@@ -9,12 +9,32 @@ $(function() {
     $toc.addClass('sticky');
   }
 
+  var generateUniqueIdBase = function(el) {
+    var text = $(el).text();
+    return text.toLowerCase().replace(/\s+/, '-').replace(/[^\w\-]+/, '');
+  };
+
+  var generateUniqueId = function(el) {
+    var anchor = generateUniqueIdBase(el);
+    if (document.getElementById(anchor)) {
+      // ID already exists
+      for (var i = 1; ; i++) {
+        var newAnchor = anchor + '-' + i;
+        // check if ID already exists
+        if (!document.getElementById(newAnchor)) {
+          return newAnchor;
+        }
+      }
+    } else {
+      return anchor;
+    }
+  };
+
   var getAnchor = function(el) {
     if (el.id) {
       return el.id;
     } else {
-      var text = $(el).text();
-      return text.toLowerCase().replace(/\s+/, '-').replace(/[^\w\-]+/, '');
+      return generateUniqueId(el);
     }
   };
 
@@ -23,6 +43,10 @@ $(function() {
 
   $('h1,h2,h3,h4').each(function(i, el) {
     var anchor = getAnchor(el);
+    if (!el.id) {
+      el.id = anchor;
+    }
+
     var text = $(el).text();
 
     var $newNav = $('<li><a href="#' + anchor + '">' + text + '</a></li>');

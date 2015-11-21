@@ -2,13 +2,6 @@
 // * https://jsfiddle.net/gableroux/S2SMK/
 // * http://gregfranko.com/jquery.tocify.js/
 $(function() {
-  var $toc = $('#toc');
-
-  // essentially a media query for Bootstrap's col-sm-* breakpoint – make the table of contents "sticky" on wider screen sizes
-  if ($(window).width() >= 768) {
-    $toc.addClass('sticky');
-  }
-
   var generateUniqueIdBase = function(el) {
     var text = $(el).text();
     var anchor = text.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
@@ -80,9 +73,9 @@ $(function() {
     return $context;
   };
 
-  var init = function() {
+  var init = function($base) {
     var $context = $('<ul></ul>');
-    $toc.append($context);
+    $base.append($context);
 
     $('h1,h2,h3,h4').each(function(i, el) {
       var anchor = generateAnchor(el);
@@ -96,7 +89,6 @@ $(function() {
     });
   };
 
-
-  init();
-  $('.sticky').Stickyfill();
+  var $toc = $('#toc');
+  init($toc);
 });

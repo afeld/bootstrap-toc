@@ -40,19 +40,12 @@ $(function() {
     }
   };
 
-  var $context = $('<ul></ul>');
-  $toc.append($context);
+  var getContext = function($startingContext, navLevel) {
+    var $context = $startingContext;
 
-  $('h1,h2,h3,h4').each(function(i, el) {
-    var anchor = generateAnchor(el);
-    var text = $(el).text();
-    var $newNav = $('<li><a href="#' + anchor + '">' + text + '</a></li>');
-    var navLevel = parseInt(el.tagName.charAt(1), 10);
-    $newNav.data('nav-level', navLevel);
-
-    // adjust the context
-    var i = 0;
     // `i` is just a safety valve, so we don't accidentally get an endless loop
+    var i = 0;
+    // this is the maximum number of times it can walk up or down the tree
     while (i < 10) {
       var prevNav = $context.children('li:last')[0];
       if (prevNav) {
@@ -83,8 +76,27 @@ $(function() {
 
       i++;
     }
-    $context.append($newNav);
-  });
 
+    return $context;
+  };
+
+  var init = function() {
+    var $context = $('<ul></ul>');
+    $toc.append($context);
+
+    $('h1,h2,h3,h4').each(function(i, el) {
+      var anchor = generateAnchor(el);
+      var text = $(el).text();
+      var $newNav = $('<li><a href="#' + anchor + '">' + text + '</a></li>');
+      var navLevel = parseInt(el.tagName.charAt(1), 10);
+      $newNav.data('nav-level', navLevel);
+
+      $context = getContext($context, navLevel);
+      $context.append($newNav);
+    });
+  };
+
+
+  init();
   $('.sticky').Stickyfill();
 });

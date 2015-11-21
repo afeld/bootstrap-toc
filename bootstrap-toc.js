@@ -11,22 +11,22 @@ $(function() {
 
   var generateUniqueIdBase = function(el) {
     var text = $(el).text();
-    return text.toLowerCase().replace(/\s+/, '-').replace(/[^\w\-]+/, '');
+    var anchor = text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
+    return anchor || el.tagName.toLowerCase();
   };
 
   var generateUniqueId = function(el) {
-    var anchor = generateUniqueIdBase(el);
-    if (document.getElementById(anchor)) {
-      // ID already exists
-      for (var i = 1; ; i++) {
-        var newAnchor = anchor + '-' + i;
-        // check if ID already exists
-        if (!document.getElementById(newAnchor)) {
-          return newAnchor;
-        }
+    var anchorBase = generateUniqueIdBase(el);
+    for (var i = 0; ; i++) {
+      var anchor = anchorBase;
+      if (i > 0) {
+        // add suffix
+        anchor += '-' + i;
       }
-    } else {
-      return anchor;
+      // check if ID already exists
+      if (!document.getElementById(anchor)) {
+        return anchor;
+      }
     }
   };
 

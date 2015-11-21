@@ -11,7 +11,7 @@ $(function() {
 
   var generateUniqueIdBase = function(el) {
     var text = $(el).text();
-    var anchor = text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
+    var anchor = text.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
     return anchor || el.tagName.toLowerCase();
   };
 
@@ -30,11 +30,13 @@ $(function() {
     }
   };
 
-  var getAnchor = function(el) {
+  var generateAnchor = function(el) {
     if (el.id) {
       return el.id;
     } else {
-      return generateUniqueId(el);
+      var anchor = generateUniqueId(el);
+      el.id = anchor;
+      return anchor;
     }
   };
 
@@ -42,13 +44,8 @@ $(function() {
   $toc.append($context);
 
   $('h1,h2,h3,h4').each(function(i, el) {
-    var anchor = getAnchor(el);
-    if (!el.id) {
-      el.id = anchor;
-    }
-
+    var anchor = generateAnchor(el);
     var text = $(el).text();
-
     var $newNav = $('<li><a href="#' + anchor + '">' + text + '</a></li>');
     var navLevel = parseInt(el.tagName.charAt(1), 10);
     $newNav.data('nav-level', navLevel);

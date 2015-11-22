@@ -1,6 +1,3 @@
-// inspiration:
-// * https://jsfiddle.net/gableroux/S2SMK/
-// * http://gregfranko.com/jquery.tocify.js/
 (function() {
   var generateUniqueIdBase = function(el) {
     var text = $(el).text();
@@ -43,9 +40,9 @@
     return $childList;
   };
 
-  var generateNavItem = function(headerEl) {
-    var anchor = generateAnchor(headerEl);
-    var text = $(headerEl).text();
+  var generateNavItem = function(headingEl) {
+    var anchor = generateAnchor(headingEl);
+    var text = $(headingEl).text();
     return $('<li><a href="#' + anchor + '">' + text + '</a></li>');
   };
 

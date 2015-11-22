@@ -4,6 +4,7 @@ permalink: /
 ---
 
 # Bootstrap Table of Contents plugin
+{: .page-header}
 
 This [Bootstrap](http://getbootstrap.com/) plugin allows you to generate a table of contents for any page, based on the heading elements (`<h1>`, `<h2>`, etc.). It is meant to emulate the sidebar you see on [the Bootstrap documentation site](http://getbootstrap.com/css/).
 

@@ -108,4 +108,11 @@
       populateNav($topContext, topLevel, $headings);
     }
   };
+
+  $(function() {
+    $('nav[data-toggle="toc"]').each(function(i, el) {
+      var $toc = $(el);
+      Toc.init($toc);
+    });
+  });
 })();

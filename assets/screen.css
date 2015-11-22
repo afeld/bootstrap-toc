@@ -1,4 +1,4 @@
-.bs-toc {
+nav[data-toggle='toc'] {
   top: 30px;
 }
 

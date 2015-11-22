@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var clean = require('gulp-clean');
+var del = require('del');
 var template = require('gulp-template');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
@@ -8,8 +8,7 @@ var mochaPhantomJS = require('gulp-mocha-phantomjs');
 var pkg = require('./package.json');
 
 gulp.task('clean', function () {
-  return gulp.src('dist/*', {read: false})
-    .pipe(clean());
+  return del(['dist/*']);
 });
 
 gulp.task('build-css', ['clean'], function() {

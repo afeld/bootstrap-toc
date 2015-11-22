@@ -37,6 +37,12 @@ $(function() {
     return $('<ul class="nav"></ul>');
   };
 
+  var createChildNavList = function($parent) {
+    var $childList = createNavList();
+    $parent.append($childList);
+    return $childList;
+  };
+
   var generateNavItem = function(headerEl) {
     var anchor = generateAnchor(headerEl);
     var text = $(headerEl).text();
@@ -68,9 +74,7 @@ $(function() {
   };
 
   var init = function($base) {
-    var $topContext = createNavList();
-    $base.append($topContext);
-
+    var $topContext = createChildNavList($base);
     var topLevel = getTopLevel();
     var $headings = getHeadings(topLevel);
 
@@ -87,9 +91,7 @@ $(function() {
         // secondary
         if ($prevNav && $context === $topContext) {
           // create a new level of the tree
-          var $childList = createNavList();
-          $prevNav.append($childList);
-          $context = $childList;
+          $context = createChildNavList($prevNav);
         } // else use the current $context
       }
 

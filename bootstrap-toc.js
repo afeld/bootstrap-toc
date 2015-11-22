@@ -83,11 +83,29 @@ $(function() {
     return $('<li><a href="#' + anchor + '">' + text + '</a></li>');
   };
 
+  // Find the first heading level (`<h1>`, then `<h2>`, etc.) that has more than one element. Defaults to 1 (for `<h1>`).
+  var getTopLevel = function() {
+    var topLevel;
+    for (var i = 1; i < 4; i++) {
+      var $headings = $('h' + i);
+      if ($headings.length > 1) {
+        topLevel = i;
+        break;
+      }
+    }
+
+    return topLevel || 1;
+  };
+
   var init = function($base) {
     var $context = createNavList();
     $base.append($context);
 
-    $('h1,h2,h3,h4').each(function(i, el) {
+    var topLevel = getTopLevel();
+    // use the top level, and the next below it
+    var $headings = $('h' + topLevel + ',h' + (topLevel + 1));
+
+    $headings.each(function(i, el) {
       var $newNav = generateNavItem(el);
 
       var navLevel = parseInt(el.tagName.charAt(1), 10);

@@ -13,6 +13,7 @@ gulp.task('clean', function () {
 gulp.task('build-css', ['clean'], function() {
   return gulp.src('bootstrap-toc.css')
     .pipe(template(pkg))
+    .pipe(gulp.dest('dist'))
     .pipe(minifyCss({compatibility: 'ie8'}))
     .pipe(rename({
       extname: '.min.css'

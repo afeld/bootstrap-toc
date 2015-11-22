@@ -73,9 +73,9 @@ $(function() {
     return $context;
   };
 
-  var generateNavItem = function(header) {
-    var anchor = generateAnchor(el);
-    var text = $(el).text();
+  var generateNavItem = function(headerEl) {
+    var anchor = generateAnchor(headerEl);
+    var text = $(headerEl).text();
     return $('<li><a href="#' + anchor + '">' + text + '</a></li>');
   };
 

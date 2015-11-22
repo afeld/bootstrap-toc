@@ -93,3 +93,7 @@ You may also want to include this in your stylesheet:
 * [Bootstrap Docs Sidebar example](https://jsfiddle.net/gableroux/S2SMK/)
 * [Tocify plugin](http://gregfranko.com/jquery.tocify.js/)
 * [TOC plugin](http://projects.jga.me/toc/)
+
+## Contributing
+
+Questions, feature suggestions, and bug reports/fixes welcome! To test, take a look at the various files under the `test/` directory.

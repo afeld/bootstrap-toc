@@ -96,4 +96,18 @@ You may also want to include this in your stylesheet:
 
 ## Contributing
 
-Questions, feature suggestions, and bug reports/fixes welcome! To test, take a look at the various files under the `test/` directory.
+Questions, feature suggestions, and bug reports/fixes welcome!
+
+### Manual testing
+
+1. Run `bundle`.
+1. Run `bundle exec jekyll serve`.
+1. Open the various test templates:
+    * [H2's](http://localhost:4000/test/templates/h2s.html)
+    * [Markdown](http://localhost:4000/test/templates/markdown.html)
+    * [No IDs](http://localhost:4000/test/templates/no-ids.html)
+
+### Automated testing
+
+1. Run `npm install`.
+1. Run `gulp test` (command-line), or `open test/index.html` (browser).

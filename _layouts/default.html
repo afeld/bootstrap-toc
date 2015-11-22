@@ -6,15 +6,16 @@
     <title>Bootstrap Table of Contents</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/screen.css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{{ site.baseurl }}/bootstrap-toc.css" media="screen" charset="utf-8">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src="{{ site.baseurl }}/bootstrap-toc.js" charset="utf-8"></script>
   </head>
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container">
       <div class="row">
         <div class="col-sm-4">
-          <nav id="toc" data-spy="affix"></nav>
+          <nav id="toc" class="bs-docs-sidebar" data-spy="affix"></nav>
         </div>
         <div class="col-sm-8">
           {{ content }}

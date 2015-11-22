@@ -33,6 +33,10 @@ $(function() {
     }
   };
 
+  var createNavList = function() {
+    return $('<ul class="nav"></ul>');
+  };
+
   var getContext = function($startingContext, navLevel) {
     var $context = $startingContext;
 
@@ -46,7 +50,7 @@ $(function() {
         var prevNavLevel = $prevNav.data('nav-level');
         if (navLevel > prevNavLevel) {
           // create a new level of the tree
-          var $childList = $('<ul></ul>');
+          var $childList = createNavList();
           $prevNav.append($childList);
           $context = $childList;
         } else if (navLevel < prevNavLevel) {
@@ -80,7 +84,7 @@ $(function() {
   };
 
   var init = function($base) {
-    var $context = $('<ul></ul>');
+    var $context = createNavList();
     $base.append($context);
 
     $('h1,h2,h3,h4').each(function(i, el) {

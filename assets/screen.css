@@ -2,7 +2,7 @@ nav[data-toggle='toc'] {
   top: 30px;
 }
 
-/* override the Affix plugin on small screens */
+/* override the Affix plugin so that the navigation isn't sticky on small screens */
 @media (max-width: 768px) {
   .affix {
     position: static;

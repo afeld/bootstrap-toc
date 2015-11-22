@@ -3,6 +3,8 @@
  * Copyright 2015 Aidan Feldman
  * Licensed under MIT (https://github.com/afeld/bootstrap-toc/blob/gh-pages/LICENSE.md) */
 (function() {
+  'use strict';
+
   window.Toc = {
     helpers: {
       generateUniqueIdBase: function(el) {

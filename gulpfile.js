@@ -4,6 +4,7 @@ var template = require('gulp-template');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
+var jshint = require('gulp-jshint');
 var mochaPhantomJS = require('gulp-mocha-phantomjs');
 var pkg = require('./package.json');
 
@@ -35,6 +36,13 @@ gulp.task('build-js', ['clean'], function() {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('lint', function () {
+  return gulp.src('bootstrap-toc.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
+    .pipe(jshint.reporter('fail'));
+});
+
 gulp.task('test', function () {
   return gulp.src('test/index.html')
     .pipe(mochaPhantomJS());
@@ -45,5 +53,4 @@ gulp.task('watch', function() {
   gulp.watch('bootstrap-toc.js', ['build-js']);
 });
 
-// https://github.com/gulpjs/gulp/blob/master/docs/recipes/running-tasks-in-series.md
-gulp.task('default', ['build-css', 'build-js', 'test']);
+gulp.task('default', ['build-css', 'build-js', 'lint', 'test']);

@@ -1,10 +1,16 @@
 sudo: false
-language: node_js
-node_js:
-  - "5.1"
+language: ruby
+rvm:
+  - "2.2.3"
 branches:
   only:
     - /.*/
+before_install:
+  - npm install
 cache:
+  bundler: true
   directories:
     - node_modules
+script:
+  - bundle exec jekyll build
+  - npm test

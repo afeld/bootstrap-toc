@@ -23,11 +23,24 @@ On top of the normal Bootstrap setup (see their [Getting Started](http://getboot
 
 ### Via data attributes
 
-TODO
+Create a `<nav>` element with a `data-toggle="toc"` attribute.
+
+{% highlight html %}
+<nav data-toggle="toc"></nav>
+{% endhighlight %}
+
+You can put this wherever on the page you like.
 
 ### Via JavaScript
 
-TODO
+If you prefer to create your navigation element another way (e.g. within single-page apps), you can pass a jQuery object into `Toc.init()`.
+
+{% highlight javascript %}
+$(function() {
+  var $myNav = $('...');
+  Toc.init($myNav);
+});
+{% endhighlight %}
 
 ## Layout
 

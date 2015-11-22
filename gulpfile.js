@@ -50,6 +50,9 @@ gulp.task('test', function () {
 
 gulp.task('js', ['build-js', 'js-lint', 'test']);
 
+
+// primary tasks
+
 gulp.task('watch', function() {
   gulp.watch('bootstrap-toc.css', ['build-css']);
   gulp.watch('bootstrap-toc.js', ['js']);

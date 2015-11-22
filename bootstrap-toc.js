@@ -73,22 +73,26 @@ $(function() {
     return $(topSelector + ',' + secondarySelector);
   };
 
+  var getNavLevel = function(el) {
+    return parseInt(el.tagName.charAt(1), 10);
+  };
+
   var populateNav = function($topContext, topLevel, $headings) {
     var $context = $topContext;
     var $prevNav;
+
     $headings.each(function(i, el) {
       var $newNav = generateNavItem(el);
-      var navLevel = parseInt(el.tagName.charAt(1), 10);
+      var navLevel = getNavLevel(el);
 
+      // determine the proper $context
       if (navLevel === topLevel) {
+        // use top level
         $context = $topContext;
-      } else {
-        // secondary
-        if ($prevNav && $context === $topContext) {
-          // create a new level of the tree
-          $context = createChildNavList($prevNav);
-        } // else use the current $context
-      }
+      } else if ($prevNav && $context === $topContext) {
+        // create a new level of the tree and switch to it
+        $context = createChildNavList($prevNav);
+      } // else use the current $context
 
       $context.append($newNav);
 

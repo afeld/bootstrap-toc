@@ -1,10 +1,21 @@
-nav[data-toggle='toc'] {
-  top: 30px;
+.container {
+  max-width: 800px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
-/* override the Affix plugin so that the navigation isn't sticky on small screens */
+/* small screens */
 @media (max-width: 768px) {
+  /* override the Affix plugin so that the navigation isn't sticky */
   .affix {
     position: static;
+  }
+}
+
+/* large screens */
+@media (min-width: 768px) {
+  h1:first-child {
+    margin-top: 0;
+    margin-bottom: 1.25em;
   }
 }

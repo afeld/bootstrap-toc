@@ -36,7 +36,7 @@ gulp.task('build-js', ['clean'], function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('lint', function () {
+gulp.task('js-lint', function () {
   return gulp.src('bootstrap-toc.js')
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
@@ -48,9 +48,11 @@ gulp.task('test', function () {
     .pipe(mochaPhantomJS());
 });
 
+gulp.task('js', ['build-js', 'js-lint', 'test']);
+
 gulp.task('watch', function() {
   gulp.watch('bootstrap-toc.css', ['build-css']);
-  gulp.watch('bootstrap-toc.js', ['build-js']);
+  gulp.watch('bootstrap-toc.js', ['js']);
 });
 
-gulp.task('default', ['build-css', 'build-js', 'lint', 'test']);
+gulp.task('default', ['build-css', 'js']);

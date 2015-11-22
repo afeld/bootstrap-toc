@@ -96,4 +96,4 @@ You may also want to include this in your stylesheet:
 
 ## Contributing
 
-Questions, feature suggestions, and bug reports/fixes welcome! To test, take a look at the various files under the `test/` directory.
+Questions, feature suggestions, and bug reports/fixes welcome! To test, take a look at the various files under the `test/templates/` directory.

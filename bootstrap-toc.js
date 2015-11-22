@@ -86,10 +86,10 @@
         var $context = $topContext;
         var $prevNav;
 
-        var _this = this;
+        var helpers = this;
         $headings.each(function(i, el) {
-          var $newNav = _this.generateNavItem(el);
-          var navLevel = _this.getNavLevel(el);
+          var $newNav = helpers.generateNavItem(el);
+          var navLevel = helpers.getNavLevel(el);
 
           // determine the proper $context
           if (navLevel === topLevel) {
@@ -97,7 +97,7 @@
             $context = $topContext;
           } else if ($prevNav && $context === $topContext) {
             // create a new level of the tree and switch to it
-            $context = _this.createChildNavList($prevNav);
+            $context = helpers.createChildNavList($prevNav);
           } // else use the current $context
 
           $context.append($newNav);
@@ -107,8 +107,8 @@
       }
     },
 
-    init: function($base) {
-      var $topContext = this.helpers.createChildNavList($base);
+    init: function($nav) {
+      var $topContext = this.helpers.createChildNavList($nav);
       var topLevel = this.helpers.getTopLevel();
       var $headings = this.helpers.getHeadings(topLevel);
       this.helpers.populateNav($topContext, topLevel, $headings);
@@ -117,8 +117,8 @@
 
   $(function() {
     $('nav[data-toggle="toc"]').each(function(i, el) {
-      var $toc = $(el);
-      Toc.init($toc);
+      var $nav = $(el);
+      Toc.init($nav);
     });
   });
 })();

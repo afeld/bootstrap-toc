@@ -6,6 +6,8 @@ permalink: /
 # Bootstrap Table of Contents plugin
 {: .page-header}
 
+[![Build Status](https://travis-ci.org/afeld/bootstrap-toc.svg?branch=gh-pages)](https://travis-ci.org/afeld/bootstrap-toc)
+
 This [Bootstrap](http://getbootstrap.com/) plugin allows you to generate a table of contents for any page, based on the heading elements (`<h1>`, `<h2>`, etc.). It is meant to emulate the sidebar you see on [the Bootstrap documentation site](http://getbootstrap.com/css/).
 
 This page is an example of the plugin in action – the table of contents you see on the left was automatically generated, without having to manually keep all of the navigation items in sync with the headings.

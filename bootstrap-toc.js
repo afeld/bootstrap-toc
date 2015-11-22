@@ -1,7 +1,7 @@
 // inspiration:
 // * https://jsfiddle.net/gableroux/S2SMK/
 // * http://gregfranko.com/jquery.tocify.js/
-$(function() {
+(function() {
   var generateUniqueIdBase = function(el) {
     var text = $(el).text();
     var anchor = text.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
@@ -100,13 +100,12 @@ $(function() {
     });
   };
 
-  var init = function($base) {
-    var $topContext = createChildNavList($base);
-    var topLevel = getTopLevel();
-    var $headings = getHeadings(topLevel);
-    populateNav($topContext, topLevel, $headings);
+  window.Toc = {
+    init: function($base) {
+      var $topContext = createChildNavList($base);
+      var topLevel = getTopLevel();
+      var $headings = getHeadings(topLevel);
+      populateNav($topContext, topLevel, $headings);
+    }
   };
-
-  var $toc = $('#toc');
-  init($toc);
-});
+})();

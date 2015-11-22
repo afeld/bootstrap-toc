@@ -73,14 +73,9 @@ $(function() {
     return $(topSelector + ',' + secondarySelector);
   };
 
-  var init = function($base) {
-    var $topContext = createChildNavList($base);
-    var topLevel = getTopLevel();
-    var $headings = getHeadings(topLevel);
-
+  var populateNav = function($topContext, topLevel, $headings) {
     var $context = $topContext;
     var $prevNav;
-
     $headings.each(function(i, el) {
       var $newNav = generateNavItem(el);
       var navLevel = parseInt(el.tagName.charAt(1), 10);
@@ -99,6 +94,13 @@ $(function() {
 
       $prevNav = $newNav;
     });
+  };
+
+  var init = function($base) {
+    var $topContext = createChildNavList($base);
+    var topLevel = getTopLevel();
+    var $headings = getHeadings(topLevel);
+    populateNav($topContext, topLevel, $headings);
   };
 
   var $toc = $('#toc');

@@ -9,7 +9,7 @@
     helpers: {
       generateUniqueIdBase: function(el) {
         var text = $(el).text();
-        var anchor = text.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
+        var anchor = text.trim().toLowerCase().replace(/[^A-Za-z0-9]+/g, '-');
         return anchor || el.tagName.toLowerCase();
       },
 

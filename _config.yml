@@ -1,2 +1,4 @@
 baseurl: /bootstrap-toc
 markdown: kramdown
+exclude:
+  - node_modules/

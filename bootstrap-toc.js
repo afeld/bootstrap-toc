@@ -55,10 +55,10 @@
       },
 
       // Find the first heading level (`<h1>`, then `<h2>`, etc.) that has more than one element. Defaults to 1 (for `<h1>`).
-      getTopLevel: function() {
+      getTopLevel: function($scope) {
         var topLevel;
         for (var i = 1; i < 4; i++) {
-          var $headings = $('h' + i);
+          var $headings = $scope.find('h' + i);
           if ($headings.length > 1) {
             topLevel = i;
             break;
@@ -125,7 +125,7 @@
       opts = this.helpers.parseOps(opts);
 
       var $topContext = this.helpers.createChildNavList(opts.$nav);
-      var topLevel = this.helpers.getTopLevel();
+      var topLevel = this.helpers.getTopLevel(opts.$scope);
       var $headings = this.helpers.getHeadings(opts.$scope, topLevel);
       this.helpers.populateNav($topContext, topLevel, $headings);
     }

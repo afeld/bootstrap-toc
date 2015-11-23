@@ -36,6 +36,27 @@ describe('Toc', function() {
         expect(base).to.eql('h1-1');
       });
     });
+
+    describe('.getTopLevel()', function() {
+      it("returns 1 by default", function() {
+        var $scope = $('<div></div>');
+        var level = Toc.helpers.getTopLevel($scope);
+        expect(level).to.eql(1);
+      });
+
+      it("returns the first level with more than one element", function() {
+        var $scope = $([
+          '<div>',
+            '<h1></h1>',
+            '<h2></h2>',
+            '<h3></h3>',
+            '<h3></h3>',
+          '</div>'
+        ].join());
+        var level = Toc.helpers.getTopLevel($scope);
+        expect(level).to.eql(3);
+      });
+    });
   });
 
   describe('.init()', function() {

@@ -14,14 +14,14 @@ This page is an example of the plugin in action – the table of contents you se
 
 ## Usage
 
-On top of the normal Bootstrap setup (see their [Getting Started](http://getbootstrap.com/getting-started/) guide), you will need to include [`bootstrap-toc.css`](bootstrap-toc.css) and [`bootstrap-toc.js`](bootstrap-toc.js). Download them from [here](https://github.com/afeld/toc). Here's the order the files need to be loaded on the page:
+On top of the normal Bootstrap setup (see their [Getting Started](http://getbootstrap.com/getting-started/) guide), you will need to include [`bootstrap-toc.css`](bootstrap-toc.css) and [`bootstrap-toc.js`](bootstrap-toc.js). **Download them from the latest [Release](https://github.com/afeld/bootstrap-toc/releases)**. Here's the order the files need to be loaded on the page:
 
 {% highlight html %}
 <link rel="stylesheet" href="bootstrap.min.css">
-<link rel="stylesheet" href="bootstrap-toc.css">
+<link rel="stylesheet" href="bootstrap-toc.min.css">
 <script src="jquery.min.js"></script>
 <script src="bootstrap.min.js"></script>
-<script src="bootstrap-toc.js"></script>
+<script src="bootstrap-toc.min.js"></script>
 {% endhighlight %}
 
 Then, pick one of the two options below.

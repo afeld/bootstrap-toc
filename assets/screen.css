@@ -20,6 +20,11 @@
   text-align: center;
 }
 
+footer {
+  margin-top: 50px;
+  text-align: center;
+}
+
 /* small screens */
 @media (max-width: 768px) {
   /* override the Affix plugin so that the navigation isn't sticky */

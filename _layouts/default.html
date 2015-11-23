@@ -10,11 +10,12 @@
     <![endif]-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ site.baseurl }}/bootstrap-toc.css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/highlight.css" charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/screen.css" media="screen" charset="utf-8">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src="{{ site.baseurl }}/bootstrap-toc.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
     <script type="text/javascript">
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -23,6 +24,8 @@
 
       ga('create', 'UA-19048260-11', 'auto');
       ga('send', 'pageview');
+
+      hljs.initHighlightingOnLoad();
 
       $(function() {
         $('#toc').append('<div class="hint">(creates this)</div>');

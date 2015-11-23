@@ -16,13 +16,13 @@ This page is an example of the plugin in action – the table of contents you se
 
 On top of the normal Bootstrap setup (see their [Getting Started](http://getbootstrap.com/getting-started/) guide), you will need to include [`bootstrap-toc.css`](bootstrap-toc.css) and [`bootstrap-toc.js`](bootstrap-toc.js). **Download them from the latest [Release](https://github.com/afeld/bootstrap-toc/releases)**. Here's the order the files need to be loaded on the page:
 
-{% highlight html %}
+```html
 <link rel="stylesheet" href="bootstrap.min.css">
 <link rel="stylesheet" href="bootstrap-toc.min.css">
 <script src="jquery.min.js"></script>
 <script src="bootstrap.min.js"></script>
 <script src="bootstrap-toc.min.js"></script>
-{% endhighlight %}
+```
 
 Then, pick one of the two options below.
 
@@ -30,15 +30,15 @@ Then, pick one of the two options below.
 
 Create a `<nav>` element with a `data-toggle="toc"` attribute.
 
-{% highlight html %}
+```html
 <nav id="toc" data-toggle="toc"></nav>
-{% endhighlight %}
+```
 
 You can put this wherever on the page you like. Since this plugin leverages Bootstrap's [Scrollspy](http://getbootstrap.com/javascript/#scrollspy) plugin, you will also need to add a couple attributes to the `<body>`:
 
-{% highlight html %}
+```html
 <body data-spy="scroll" data-target="#toc">
-{% endhighlight %}
+```
 
 ### Via JavaScript
 
@@ -46,7 +46,7 @@ You can put this wherever on the page you like. Since this plugin leverages Boot
 
 If you prefer to create your navigation element another way (e.g. within single-page apps), you can pass a jQuery object into `Toc.init()`.
 
-{% highlight javascript %}
+```javascript
 $(function() {
   var $myNav = $('...');
   Toc.init($myNav);
@@ -54,7 +54,7 @@ $(function() {
     target: $myNav
   });
 });
-{% endhighlight %}
+```
 
 See the [Scrollspy](http://getbootstrap.com/javascript/#scrollspy) documentation for more information about initializing that plugin.
 
@@ -62,12 +62,12 @@ See the [Scrollspy](http://getbootstrap.com/javascript/#scrollspy) documentation
 
 When calling `Toc.init()`, you can either pass in the jQuery object for the `<nav>` element (as seen above), or an options object:
 
-{% highlight javascript %}
+```javascript
 Toc.init({
   $nav: $('#myNav'),
   // ...
 });
-{% endhighlight %}
+```
 
 All options are optional, unless otherwise indicated.
 
@@ -81,7 +81,7 @@ option | type | notes
 
 This plugin isn't opinionated about where it should be placed on the page, but a common use case is to have the table of contents created as a "sticky" sidebar. We will leverage the [Affix](http://getbootstrap.com/javascript/#affix) plugin for this, and wrap the `<nav>` element in a `<div>` with a Bootstrap column class (see information about the [Grid](http://getbootstrap.com/css/#grid)). As an example putting it all together (similar to this page):
 
-{% highlight html %}
+```html
 <body data-spy="scroll" data-target="#toc">
   <div class="container">
     <div class="row">
@@ -96,11 +96,11 @@ This plugin isn't opinionated about where it should be placed on the page, but a
     </div>
   </div>
 </body>
-{% endhighlight %}
+```
 
 You may also want to include this in your stylesheet:
 
-{% highlight css %}
+```css
 /* small screens */
 @media (max-width: 768px) {
   /* override the Affix plugin so that the navigation isn't sticky */
@@ -113,7 +113,7 @@ You may also want to include this in your stylesheet:
     display: none;
   }
 }
-{% endhighlight %}
+```
 
 ## See also
 

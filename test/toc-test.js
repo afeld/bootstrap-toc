@@ -45,16 +45,24 @@ describe('Toc', function() {
       });
 
       it("returns the first level with more than one element", function() {
-        var $scope = $([
-          '<div>',
-            '<h1></h1>',
-            '<h2></h2>',
-            '<h3></h3>',
-            '<h3></h3>',
+        var $scope = $(
+          '<div>' +
+            '<h1></h1>' +
+            '<h2></h2>' +
+            '<h3></h3>' +
+            '<h3></h3>' +
           '</div>'
-        ].join());
+        );
         var level = Toc.helpers.getTopLevel($scope);
         expect(level).to.eql(3);
+      });
+    });
+
+    describe('.getNavLevel()', function() {
+      it("returns the value from the tag", function() {
+        var el = document.createElement('h5');
+        var level = Toc.helpers.getNavLevel(el);
+        expect(level).to.eql(5);
       });
     });
   });
@@ -63,11 +71,11 @@ describe('Toc', function() {
     it("handles single-level headings", function() {
       var $nav = $('<nav>');
       $fixture.append($nav);
-      $fixture.append([
-        '<h1></h1>',
-        '<h1></h1>',
-        '<h1></h1>'
-      ].join());
+      $fixture.append(
+        '<h1>H1</h1>' +
+        '<h1>H1</h1>' +
+        '<h1>H1</h1>'
+      );
 
       Toc.init({
         $nav: $nav,
@@ -75,6 +83,27 @@ describe('Toc', function() {
       });
 
       expect($nav.find('li').length).to.eql(3);
+      expect($nav.text()).to.eql('H1H1H1');
+    });
+
+    it("handles nested headings", function() {
+      var $nav = $('<nav>');
+      $fixture.append($nav);
+      $fixture.append(
+        '<h1>H1</h1>' +
+        '<h2>H2</h2>' +
+        '<h3>H3</h3>' +
+        '<h4>H4</h4>' +
+        '<h2>H2-1</h2>'
+      );
+
+      Toc.init({
+        $nav: $nav,
+        $scope: $fixture
+      });
+
+      expect($nav.find('li').length).to.eql(3);
+      expect($nav.text()).to.eql('H2H3H2-1');
     });
   });
 });

@@ -130,9 +130,9 @@ Questions, feature suggestions, and bug reports/fixes welcome!
 1. Run `bundle`.
 1. Run `bundle exec jekyll serve`.
 1. Open the various test templates:
-    * [H2's](http://localhost:4000/test/templates/h2s.html)
-    * [Markdown](http://localhost:4000/test/templates/markdown.html)
-    * [No IDs](http://localhost:4000/test/templates/no-ids.html)
+    * [H2's](http://localhost:4000/bootstrap-toc/test/templates/h2s.html)
+    * [Markdown](http://localhost:4000/bootstrap-toc/test/templates/markdown.html)
+    * [No IDs](http://localhost:4000/bootstrap-toc/test/templates/no-ids.html)
 
 ### Automated testing
 

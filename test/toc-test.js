@@ -82,8 +82,19 @@ describe('Toc', function() {
         $scope: $fixture
       });
 
-      expect($nav.find('li').length).to.eql(3);
-      expect($nav.text()).to.eql('H1H1H1');
+      expect($nav.html()).to.eql(
+        '<ul class="nav">' +
+          '<li>' +
+            '<a href="#h1">H1</a>' +
+          '</li>' +
+          '<li>' +
+            '<a href="#h1-1">H1</a>' +
+          '</li>' +
+          '<li>' +
+            '<a href="#h1-2">H1</a>' +
+          '</li>' +
+        '</ul>'
+      );
     });
 
     it("handles nested headings", function() {
@@ -102,8 +113,21 @@ describe('Toc', function() {
         $scope: $fixture
       });
 
-      expect($nav.find('li').length).to.eql(3);
-      expect($nav.text()).to.eql('H2H3H2-1');
+      expect($nav.html()).to.eql(
+        '<ul class="nav">' +
+          '<li>' +
+            '<a href="#h2">H2</a>' +
+            '<ul class="nav">' +
+              '<li>' +
+                '<a href="#h3">H3</a>' +
+              '</li>' +
+            '</ul>' +
+          '</li>' +
+          '<li>' +
+            '<a href="#h2-1">H2-1</a>' +
+          '</li>' +
+        '</ul>'
+      );
     });
   });
 });

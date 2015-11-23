@@ -11,6 +11,11 @@
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src="{{ site.baseurl }}/bootstrap-toc.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      $(function() {
+        $('#toc').append('<div class="hint">(creates this)</div>');
+      });
+    </script>
   </head>
   <body data-spy="scroll" data-target="#toc">
     <a href="https://github.com/afeld/bootstrap-toc">

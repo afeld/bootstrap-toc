@@ -49,7 +49,6 @@ gulp.task('test', function () {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('bootstrap-toc.css', ['build-css']);
   gulp.watch('bootstrap-toc.js', ['js-lint', 'test']);
   gulp.watch('test/*', ['test']);
 });

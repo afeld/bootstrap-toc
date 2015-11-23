@@ -23,8 +23,13 @@
 /* small screens */
 @media (max-width: 768px) {
   /* override the Affix plugin so that the navigation isn't sticky */
-  .affix {
+  nav.affix[data-toggle='toc'] {
     position: static;
+  }
+
+  /* don't expand nested items on small screens, which pushes down the rest of the page when navigating */
+  nav[data-toggle='toc'] .nav > .active > ul {
+    display: none;
   }
 }
 

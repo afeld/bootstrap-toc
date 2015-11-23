@@ -101,10 +101,16 @@ This plugin isn't opinionated about where it should be placed on the page, but a
 You may also want to include this in your stylesheet:
 
 {% highlight css %}
-/* override the Affix plugin so that the navigation isn't sticky on small screens */
+/* small screens */
 @media (max-width: 768px) {
-  .affix {
+  /* override the Affix plugin so that the navigation isn't sticky */
+  nav.affix[data-toggle='toc'] {
     position: static;
+  }
+
+  /* don't expand nested items on small screens, which pushes down the rest of the page when navigating */
+  nav[data-toggle='toc'] .nav > .active > ul {
+    display: none;
   }
 }
 {% endhighlight %}

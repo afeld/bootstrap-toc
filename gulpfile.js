@@ -48,12 +48,10 @@ gulp.task('test', function () {
     .pipe(mochaPhantomJS());
 });
 
-gulp.task('js', ['build-js', 'js-lint', 'test']);
-
 gulp.task('watch', function() {
   gulp.watch('bootstrap-toc.css', ['build-css']);
-  gulp.watch('bootstrap-toc.js', ['js']);
+  gulp.watch('bootstrap-toc.js', ['js-lint', 'test']);
   gulp.watch('test/*', ['test']);
 });
 
-gulp.task('default', ['build-css', 'js']);
+gulp.task('default', ['build-css', 'build-js', 'js-lint', 'test']);

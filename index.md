@@ -10,7 +10,7 @@ permalink: /
 
 This [Bootstrap](http://getbootstrap.com/) plugin allows you to generate a table of contents for any page, based on the heading elements (`<h1>`, `<h2>`, etc.). It is meant to emulate the sidebar you see on [the Bootstrap documentation site](http://getbootstrap.com/css/).
 
-This page is an example of the plugin in action – the table of contents you see on the left was automatically generated, without having to manually keep all of the navigation items in sync with the headings.
+This page is an example of the plugin in action – the table of contents you see on the left (or top, on mobile) was automatically generated, without having to manually keep all of the navigation items in sync with the headings.
 
 ## Usage
 
@@ -108,9 +108,14 @@ You may also want to include this in your stylesheet:
     position: static;
   }
 
-  /* don't expand nested items on small screens, which pushes down the rest of the page when navigating */
-  nav[data-toggle='toc'] .nav > .active > ul {
+  /* PICK ONE */
+  /* don't expand nested items, which pushes down the rest of the page when navigating */
+  nav[data-toggle='toc'] .nav .nav.active {
     display: none;
+  }
+  /* alternatively, if you *do* want the second-level navigation to be shown (as seen on this page on mobile), use this */
+  nav[data-toggle='toc'] .nav .nav {
+    display: block;
   }
 }
 ```

@@ -36,9 +36,13 @@ footer {
     position: static;
   }
 
-  /* don't expand nested items on small screens, which pushes down the rest of the page when navigating */
-  nav[data-toggle='toc'] .nav > .active > ul {
-    display: none;
+  /* display the second-level nav */
+  nav[data-toggle='toc'] .nav .nav {
+    display: block;
+  }
+
+  .hint {
+    top: 0;
   }
 }
 

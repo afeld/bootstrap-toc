@@ -14,7 +14,7 @@ This page is an example of the plugin in action – the table of contents you se
 
 ## Usage
 
-On top of the normal Bootstrap setup (see their [Getting Started](http://getbootstrap.com/getting-started/) guide), you will need to include [`bootstrap-toc.css`](bootstrap-toc.css) and [`bootstrap-toc.js`](bootstrap-toc.js). **Download them from the latest [Release](https://github.com/afeld/bootstrap-toc/releases)**. Here's the order the files need to be loaded on the page:
+On top of the normal Bootstrap setup (see their [Getting Started](http://getbootstrap.com/getting-started/) guide), you will need to include `bootstrap-toc.css` and `bootstrap-toc.js`. **Download them from the latest [Release](https://github.com/afeld/bootstrap-toc/releases)**. Here's the order the files need to be loaded on the page:
 
 ```html
 <link rel="stylesheet" href="bootstrap.min.css">
@@ -122,6 +122,8 @@ You may also want to include this in your stylesheet:
 
 ## See also
 
+This plugin was heavily inspired by:
+
 * [Bootstrap Docs Sidebar example](https://jsfiddle.net/gableroux/S2SMK/)
 * [Tocify plugin](http://gregfranko.com/jquery.tocify.js/)
 * [TOC plugin](http://projects.jga.me/toc/)
@@ -142,4 +144,6 @@ Questions, feature suggestions, and bug reports/fixes welcome!
 ### Automated testing
 
 1. Run `npm install`.
-1. Run `gulp test` (command-line), or `open test/index.html` (browser).
+1. Run `gulp test`/`gulp watch` (command-line), or `open test/index.html` (browser).
+
+You can find the tests in [`test/toc-test.js`](test/toc-test.js).

@@ -3,7 +3,7 @@ layout: default
 permalink: /
 ---
 
-# Bootstrap Table of Contents plugin
+# Table of Contents plugin for Bootstrap
 {: .page-header}
 
 [![Build Status](https://travis-ci.org/afeld/bootstrap-toc.svg?branch=gh-pages)](https://travis-ci.org/afeld/bootstrap-toc)
@@ -86,11 +86,11 @@ This plugin isn't opinionated about where it should be placed on the page, but a
   <div class="container">
     <div class="row">
       <!-- sidebar, which will move to the top on a small screen -->
-      <div class="col-sm-4">
+      <div class="col-sm-3">
         <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
       </div>
       <!-- main content area -->
-      <div class="col-sm-8">
+      <div class="col-sm-9">
         ...
       </div>
     </div>

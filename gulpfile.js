@@ -53,6 +53,7 @@ gulp.task('js', ['build-js', 'js-lint', 'test']);
 gulp.task('watch', function() {
   gulp.watch('bootstrap-toc.css', ['build-css']);
   gulp.watch('bootstrap-toc.js', ['js']);
+  gulp.watch('test/*', ['test']);
 });
 
 gulp.task('default', ['build-css', 'js']);

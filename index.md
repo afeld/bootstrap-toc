@@ -58,6 +58,25 @@ $(function() {
 
 See the [Scrollspy](http://getbootstrap.com/javascript/#scrollspy) documentation for more information about initializing that plugin.
 
+#### Options
+
+When calling `Toc.init()`, you can either pass in the jQuery object for the `<nav>` element (as seen above), or an options object:
+
+{% highlight javascript %}
+Toc.init({
+  $nav: $('#myNav'),
+  // ...
+});
+{% endhighlight %}
+
+All options are optional, unless otherwise indicated.
+
+option | type | notes
+--- | --- | ---
+`$nav` | jQuery Object | (required) The element that the navigation will be created in.
+`$scope` | jQuery Object | The element where the search for headings will be limited to. Defaults to `$(document.body)`.
+{: .table }
+
 ## Layout
 
 This plugin isn't opinionated about where it should be placed on the page, but a common use case is to have the table of contents created as a "sticky" sidebar. We will leverage the [Affix](http://getbootstrap.com/javascript/#affix) plugin for this, and wrap the `<nav>` element in a `<div>` with a Bootstrap column class (see information about the [Grid](http://getbootstrap.com/css/#grid)). As an example putting it all together (similar to this page):

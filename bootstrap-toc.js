@@ -69,13 +69,13 @@
       },
 
       // returns the elements for the top level, and the next below it
-      getHeadings: function(topLevel) {
+      getHeadings: function($scope, topLevel) {
         var topSelector = 'h' + topLevel;
 
         var secondaryLevel = topLevel + 1;
         var secondarySelector = 'h' + secondaryLevel;
 
-        return $(topSelector + ',' + secondarySelector);
+        return $scope.find(topSelector + ',' + secondarySelector);
       },
 
       getNavLevel: function(el) {
@@ -104,13 +104,29 @@
 
           $prevNav = $newNav;
         });
+      },
+
+      parseOps: function(arg) {
+        var opts;
+        if (arg.jquery) {
+          opts = {
+            $nav: arg
+          };
+        } else {
+          opts = arg;
+        }
+        opts.$scope = opts.$scope || $(document.body);
+        return opts;
       }
     },
 
-    init: function($nav) {
-      var $topContext = this.helpers.createChildNavList($nav);
+    // accepts a jQuery object, or an options object
+    init: function(opts) {
+      opts = this.helpers.parseOps(opts);
+
+      var $topContext = this.helpers.createChildNavList(opts.$nav);
       var topLevel = this.helpers.getTopLevel();
-      var $headings = this.helpers.getHeadings(topLevel);
+      var $headings = this.helpers.getHeadings(opts.$scope, topLevel);
       this.helpers.populateNav($topContext, topLevel, $headings);
     }
   };

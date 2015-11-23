@@ -14,19 +14,22 @@ This page is an example of the plugin in action – the table of contents you se
 
 ## Usage
 
-On top of the normal Bootstrap setup (see their [Getting Started](http://getbootstrap.com/getting-started/) guide), you will need to include `bootstrap-toc.css` and `bootstrap-toc.js`. **Download them from the latest [Release](https://github.com/afeld/bootstrap-toc/releases)**. Here's the order the files need to be loaded on the page:
+On top of the normal Bootstrap setup (see their [Getting Started](http://getbootstrap.com/getting-started/) guide), you will need to include the Bootstrap Table of Contents stylesheet and JavaScript file.
 
 ```html
-<link rel="stylesheet" href="bootstrap.min.css">
-<link rel="stylesheet" href="bootstrap-toc.min.css">
-<script src="jquery.min.js"></script>
-<script src="bootstrap.min.js"></script>
-<script src="bootstrap-toc.min.js"></script>
+<!-- add after bootstrap.min.css -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/2f761d4/dist/bootstrap-toc.min.css">
+<!-- add after bootstrap.min.js -->
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/2f761d4/dist/bootstrap-toc.min.js"></script>
 ```
 
-Then, pick one of the two options below.
+[Unminified versions](https://github.com/afeld/bootstrap-toc/tree/gh-pages/dist) are also available.
+
+Next, pick one of the two options below.
 
 ### Via data attributes
+
+*Simplest.*
 
 Create a `<nav>` element with a `data-toggle="toc"` attribute.
 
@@ -42,7 +45,7 @@ You can put this wherever on the page you like. Since this plugin leverages Boot
 
 ### Via JavaScript
 
-*Note: More advanced.*
+*If you need customization.*
 
 If you prefer to create your navigation element another way (e.g. within single-page apps), you can pass a jQuery object into `Toc.init()`.
 

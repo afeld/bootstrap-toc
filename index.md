@@ -104,6 +104,10 @@ This plugin isn't opinionated about where it should be placed on the page, but a
 You may also want to include this in your stylesheet:
 
 ```css
+nav[data-toggle='toc'] {
+  margin-top: 30px;
+}
+
 /* small screens */
 @media (max-width: 768px) {
   /* override the Affix plugin so that the navigation isn't sticky */
@@ -113,7 +117,7 @@ You may also want to include this in your stylesheet:
 
   /* PICK ONE */
   /* don't expand nested items, which pushes down the rest of the page when navigating */
-  nav[data-toggle='toc'] .nav .nav.active {
+  nav[data-toggle='toc'] .nav .active .nav {
     display: none;
   }
   /* alternatively, if you *do* want the second-level navigation to be shown (as seen on this page on mobile), use this */

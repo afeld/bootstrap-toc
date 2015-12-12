@@ -77,7 +77,7 @@ All options are optional, unless otherwise indicated.
 option | type | notes
 --- | --- | ---
 `$nav` | jQuery Object | (required) The element that the navigation will be created in.
-`$scope` | jQuery Object | The element where the search for headings will be limited to. Defaults to `$(document.body)`.
+`$scope` | jQuery Object | The element where the search for headings will be limited to, or the list of headings that will be used in the navigation. Defaults to `$(document.body)`.
 {: .table }
 
 ## Layout

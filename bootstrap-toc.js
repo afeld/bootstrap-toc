@@ -131,6 +131,9 @@
     init: function(opts) {
       opts = this.helpers.parseOps(opts);
 
+      // ensure that the data attribute is in place for styling
+      opts.$nav.attr('data-toggle', 'toc');
+
       var $topContext = this.helpers.createChildNavList(opts.$nav);
       var topLevel = this.helpers.getTopLevel(opts.$scope);
       var $headings = this.helpers.getHeadings(opts.$scope, topLevel);

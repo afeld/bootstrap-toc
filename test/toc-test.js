@@ -129,5 +129,26 @@ describe('Toc', function() {
         '</ul>'
       );
     });
+
+    it("accepts a list of headings as the $scope", function() {
+      var $nav = $('<nav>');
+      $fixture.append($nav);
+      var $h1 = $('<h1>H1</h1>');
+      var $h2 = $('<h2>H2</h2>');
+      $fixture.append($h1, $h2);
+
+      Toc.init({
+        $nav: $nav,
+        $scope: $h1
+      });
+
+      expect($nav.html()).to.eql(
+        '<ul class="nav">' +
+          '<li>' +
+            '<a href="#h1">H1</a>' +
+          '</li>' +
+        '</ul>'
+      );
+    });
   });
 });

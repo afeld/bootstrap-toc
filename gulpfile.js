@@ -53,4 +53,6 @@ gulp.task('watch', function() {
   gulp.watch('test/*', ['test']);
 });
 
-gulp.task('default', ['build-css', 'build-js', 'js-lint', 'test']);
+gulp.task('build', ['build-css', 'build-js']);
+
+gulp.task('default', ['build', 'js-lint', 'test']);

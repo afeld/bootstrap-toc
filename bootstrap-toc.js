@@ -57,7 +57,8 @@
 
       generateNavItem: function(headingEl) {
         var anchor = this.generateAnchor(headingEl);
-        var text = $(headingEl).text();
+        var $heading = $(headingEl);
+        var text = $heading.data('toc-text') || $heading.text();
         return $('<li><a href="#' + anchor + '">' + text + '</a></li>');
       },
 

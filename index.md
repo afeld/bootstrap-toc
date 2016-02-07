@@ -80,6 +80,16 @@ option | type | notes
 `$scope` | jQuery Object | The element where the search for headings will be limited to, or the list of headings that will be used in the navigation. Defaults to `$(document.body)`.
 {: .table }
 
+## Customization
+
+By default, Bootstrap TOC will use the text from the heading element in the table of contents. If you want to customize what is displayed, add a `data-toc-text` attribute. For example:
+
+```html
+<h2 data-toc-text="Usage">Usage instructions</h2>
+```
+
+will display "Usage instructions" as the heading, but "Usage" in the sidebar.
+
 ## Layout
 
 This plugin isn't opinionated about where it should be placed on the page, but a common use case is to have the table of contents created as a "sticky" sidebar. We will leverage the [Affix](http://getbootstrap.com/javascript/#affix) plugin for this, and wrap the `<nav>` element in a `<div>` with a Bootstrap column class (see information about the [Grid](http://getbootstrap.com/css/#grid)). As an example putting it all together (similar to this page):

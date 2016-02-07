@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Table of Contents v0.1.0 (http://afeld.github.io/bootstrap-toc/)
+ * Bootstrap Table of Contents v0.2.0 (http://afeld.github.io/bootstrap-toc/)
  * Copyright 2015 Aidan Feldman
  * Licensed under MIT (https://github.com/afeld/bootstrap-toc/blob/gh-pages/LICENSE.md) */
 (function() {
@@ -7,6 +7,13 @@
 
   window.Toc = {
     helpers: {
+      // return all matching elements in the set, or their descendants
+      findOrFilter: function($el, selector) {
+        // http://danielnouri.org/notes/2011/03/14/a-jquery-find-that-also-finds-the-root-element/
+        var $descendants = $el.find(selector);
+        return $el.filter(selector).add($descendants);
+      },
+
       generateUniqueIdBase: function(el) {
         var text = $(el).text();
         var anchor = text.trim().toLowerCase().replace(/[^A-Za-z0-9]+/g, '-');
@@ -50,7 +57,8 @@
 
       generateNavItem: function(headingEl) {
         var anchor = this.generateAnchor(headingEl);
-        var text = $(headingEl).text();
+        var $heading = $(headingEl);
+        var text = $heading.data('toc-text') || $heading.text();
         return $('<li><a href="#' + anchor + '">' + text + '</a></li>');
       },
 
@@ -58,7 +66,7 @@
       getTopLevel: function($scope) {
         var topLevel;
         for (var i = 1; i < 4; i++) {
-          var $headings = $scope.find('h' + i);
+          var $headings = this.findOrFilter($scope, 'h' + i);
           if ($headings.length > 1) {
             topLevel = i;
             break;
@@ -75,7 +83,7 @@
         var secondaryLevel = topLevel + 1;
         var secondarySelector = 'h' + secondaryLevel;
 
-        return $scope.find(topSelector + ',' + secondarySelector);
+        return this.findOrFilter($scope, topSelector + ',' + secondarySelector);
       },
 
       getNavLevel: function(el) {
@@ -123,6 +131,9 @@
     // accepts a jQuery object, or an options object
     init: function(opts) {
       opts = this.helpers.parseOps(opts);
+
+      // ensure that the data attribute is in place for styling
+      opts.$nav.attr('data-toggle', 'toc');
 
       var $topContext = this.helpers.createChildNavList(opts.$nav);
       var topLevel = this.helpers.getTopLevel(opts.$scope);

@@ -80,15 +80,16 @@ option | type | notes
 `$scope` | jQuery Object | The element where the search for headings will be limited to, or the list of headings that will be used in the navigation. Defaults to `$(document.body)`.
 {: .table }
 
-## Customization
+## Customization of the text
+{: data-toc-text="Customization"}
 
-By default, Bootstrap TOC will use the text from the heading element in the table of contents. If you want to customize what is displayed, add a `data-toc-text` attribute. For example:
+By default, Bootstrap TOC will use the text from the heading element in the table of contents. If you want to customize what is displayed, add a `data-toc-text` attribute. For example, the heading of this section looks like this:
 
 ```html
-<h2 data-toc-text="Usage">Usage instructions</h2>
+<h2 data-toc-text="Customization">Customization of the text</h2>
 ```
 
-will display "Usage instructions" as the heading, but "Usage" in the sidebar.
+which displays "Customization of the text" as the heading, but just "Customization" in the sidebar.
 
 ## Layout
 

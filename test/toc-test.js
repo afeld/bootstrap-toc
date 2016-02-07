@@ -6,6 +6,20 @@ afterEach(function() {
 
 describe('Toc', function() {
   describe('.helpers', function() {
+    describe('.generateNavItem()', function() {
+      it("uses text within the element by default", function() {
+        var heading = $('<h1>foo</h1>')[0];
+        var $navItem = Toc.helpers.generateNavItem(heading);
+        expect($navItem.text()).to.eql('foo');
+      });
+
+      it("uses text specified as a data-toc-text attribute", function() {
+        var heading = $('<h1 data-toc-text="foo">bar</h1>')[0];
+        var $navItem = Toc.helpers.generateNavItem(heading);
+        expect($navItem.text()).to.eql('foo');
+      });
+    });
+
     describe('.generateUniqueIdBase()', function() {
       it("uses the text from the element", function() {
         var el = document.createElement('h1');

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test": "gulp"
+    "test": "gulp test"
   },
   "dependencies": {
     "del": "^2.1.0",

@@ -80,16 +80,27 @@ option | type | notes
 `$scope` | jQuery Object | The element where the search for headings will be limited to, or the list of headings that will be used in the navigation. Defaults to `$(document.body)`.
 {: .table }
 
-## Customization of the text
-{: data-toc-text="Customization"}
+## Customization
 
-By default, Bootstrap TOC will use the text from the heading element in the table of contents. If you want to customize what is displayed, add a `data-toc-text` attribute. For example, the heading of this section looks like this:
+The following options can be specified at the heading level via `data-toc-*` attributes.
+
+### Displayed text
+
+By default, Bootstrap TOC will use the text from the heading element in the table of contents. If you want to customize what is displayed, add a `data-toc-text` attribute with the desired text. For example:
 
 ```html
-<h2 data-toc-text="Customization">Customization of the text</h2>
+<h2 data-toc-text="Short text">Longer text</h2>
 ```
 
-which displays "Customization of the text" as the heading, but just "Customization" in the sidebar.
+displays "Longer text" as the heading, but "Short text" in the sidebar.
+
+### Skipping
+
+To prevent a particular heading from being added to the table of contents, add a `data-toc-skip` [boolean attribute](https://www.w3.org/TR/2008/WD-html5-20080610/semantics.html#boolean).
+
+```html
+<h2 data-toc-skip>Some heading you don't want in the nav</h2>
+```
 
 ## Layout
 

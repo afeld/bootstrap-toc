@@ -82,9 +82,13 @@ describe('Toc', function() {
   });
 
   describe('.init()', function() {
-    it("handles single-level headings", function() {
-      var $nav = $('<nav>');
+    var $nav;
+    beforeEach(function() {
+      $nav = $('<nav>');
       $fixture.append($nav);
+    });
+
+    it("handles single-level headings", function() {
       $fixture.append(
         '<h1>H1</h1>' +
         '<h1>H1</h1>' +
@@ -111,9 +115,31 @@ describe('Toc', function() {
       );
     });
 
+    it("ignores headings with a data-toc-skip attribute", function() {
+      $fixture.append(
+        '<h1>H1</h1>' +
+        '<h1 data-toc-skip>H1</h1>' +
+        '<h1>H1</h1>'
+      );
+
+      Toc.init({
+        $nav: $nav,
+        $scope: $fixture
+      });
+
+      expect($nav.html()).to.eql(
+        '<ul class="nav">' +
+          '<li>' +
+            '<a href="#h1">H1</a>' +
+          '</li>' +
+          '<li>' +
+            '<a href="#h1-1">H1</a>' +
+          '</li>' +
+        '</ul>'
+      );
+    });
+
     it("handles nested headings", function() {
-      var $nav = $('<nav>');
-      $fixture.append($nav);
       $fixture.append(
         '<h1>H1</h1>' +
         '<h2>H2</h2>' +
@@ -145,8 +171,6 @@ describe('Toc', function() {
     });
 
     it("accepts a list of headings as the $scope", function() {
-      var $nav = $('<nav>');
-      $fixture.append($nav);
       var $h1 = $('<h1>H1</h1>');
       var $h2 = $('<h2>H2</h2>');
       $fixture.append($h1, $h2);

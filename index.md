@@ -18,9 +18,9 @@ On top of the normal Bootstrap setup (see their [Getting Started](http://getboot
 
 ```html
 <!-- add after bootstrap.min.css -->
-<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.2.0/dist/bootstrap-toc.min.css">
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.3.0/dist/bootstrap-toc.min.css">
 <!-- add after bootstrap.min.js -->
-<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.2.0/dist/bootstrap-toc.min.js"></script>
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.3.0/dist/bootstrap-toc.min.js"></script>
 ```
 
 [Unminified versions](https://github.com/afeld/bootstrap-toc/tree/gh-pages/dist) are also available.

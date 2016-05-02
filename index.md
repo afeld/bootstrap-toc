@@ -51,10 +51,11 @@ If you prefer to create your navigation element another way (e.g. within single-
 
 ```javascript
 $(function() {
-  var $myNav = $('...');
+  var navSelector = '<something>';
+  var $myNav = $(navSelector);
   Toc.init($myNav);
   $('body').scrollspy({
-    target: $myNav
+    target: navSelector
   });
 });
 ```

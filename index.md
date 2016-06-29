@@ -49,9 +49,13 @@ You can put this wherever on the page you like. Since this plugin leverages Boot
 
 If you prefer to create your navigation element another way (e.g. within single-page apps), you can pass a jQuery object into `Toc.init()`.
 
+```html
+<nav id="toc"></nav>
+```
+
 ```javascript
 $(function() {
-  var navSelector = '<something>';
+  var navSelector = '#toc';
   var $myNav = $(navSelector);
   Toc.init($myNav);
   $('body').scrollspy({

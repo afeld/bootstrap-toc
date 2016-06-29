@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Table of Contents v0.3.0 (http://afeld.github.io/bootstrap-toc/)
+ * Bootstrap Table of Contents v0.4.0 (http://afeld.github.io/bootstrap-toc/)
  * Copyright 2015 Aidan Feldman
  * Licensed under MIT (https://github.com/afeld/bootstrap-toc/blob/gh-pages/LICENSE.md) */
 (function() {
@@ -65,16 +65,14 @@
 
       // Find the first heading level (`<h1>`, then `<h2>`, etc.) that has more than one element. Defaults to 1 (for `<h1>`).
       getTopLevel: function($scope) {
-        var topLevel;
-        for (var i = 1; i < 4; i++) {
+        for (var i = 1; i <= 6; i++) {
           var $headings = this.findOrFilter($scope, 'h' + i);
           if ($headings.length > 1) {
-            topLevel = i;
-            break;
+            return i;
           }
         }
 
-        return topLevel || 1;
+        return 1;
       },
 
       // returns the elements for the top level, and the next below it

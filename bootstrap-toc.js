@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Table of Contents v<%= version %> (http://afeld.github.io/bootstrap-toc/)
+ * Bootstrap Table of Contents v0.4.0 (http://afeld.github.io/bootstrap-toc/)
  * Copyright 2015 Aidan Feldman
  * Licensed under MIT (https://github.com/afeld/bootstrap-toc/blob/gh-pages/LICENSE.md) */
 (function($) {
@@ -64,10 +64,10 @@
       },
 
       // Find the first heading level (`<h1>`, then `<h2>`, etc.) that has more than one element. Defaults to 1 (for `<h1>`).
-      getTopLevel: function($scope) {
+      getTopLevel: function($scope, $includeAllHeaders) {
         for (var i = 1; i <= 6; i++) {
           var $headings = this.findOrFilter($scope, 'h' + i);
-          if ($headings.length > 1) {
+          if ($headings.length > 1 || $includeAllHeaders) {
             return i;
           }
         }
@@ -123,6 +123,7 @@
           opts = arg;
         }
         opts.$scope = opts.$scope || $(document.body);
+        opts.$includeAllHeaders = opts.$includeAllHeaders || false;
         return opts;
       }
     },
@@ -135,7 +136,7 @@
       opts.$nav.attr('data-toggle', 'toc');
 
       var $topContext = this.helpers.createChildNavList(opts.$nav);
-      var topLevel = this.helpers.getTopLevel(opts.$scope);
+      var topLevel = this.helpers.getTopLevel(opts.$scope, opts.$includeAllHeaders);
       var $headings = this.helpers.getHeadings(opts.$scope, topLevel);
       this.helpers.populateNav($topContext, topLevel, $headings);
     }

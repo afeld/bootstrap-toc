@@ -73,6 +73,25 @@ describe('Toc', function() {
         var level = Toc.helpers.getTopLevel($scope);
         expect(level).to.eql(6);
       });
+
+      it("returns the first level if include all specified", function() {
+        var $scope = $(
+          '<div>' +
+            '<h1></h1>' +
+            '<h2></h2>' +
+            '<h3></h3>' +
+            '<h4></h4>' +
+            '<h5></h5>' +
+            '<h6></h6>' +
+            '<h6></h6>' +
+          '</div>'
+        );
+        var opts = {
+          $includeAll: true
+        };
+        var level = Toc.helpers.getTopLevel($scope, opts);
+        expect(level).to.eql(1);
+      });
     });
 
     describe('.getNavLevel()', function() {
@@ -187,6 +206,31 @@ describe('Toc', function() {
         '<ul class="nav">' +
           '<li>' +
             '<a href="#h1">H1</a>' +
+          '</li>' +
+        '</ul>'
+      );
+    });
+
+    it("accepts a $includeAllHeaders in the $scope", function() {
+      $fixture.append(
+        '<h1>H1</h1>' +
+        '<h2>H2</h2>'
+      );
+
+      Toc.init({
+        $nav: $nav,
+        $scope: $fixture
+      });
+
+      expect($nav.html()).to.eql(
+        '<ul class="nav">' +
+          '<li>' +
+            '<a href="#h1">H1</a>' +
+            '<ul class="nav">' +
+              '<li>' +
+                '<a href="#h2">H2</a>' +
+              '</li>' +
+            '</ul>' +
           '</li>' +
         '</ul>'
       );

@@ -18,6 +18,21 @@ describe('Toc', function() {
         var $navItem = Toc.helpers.generateNavItem(heading);
         expect($navItem.text()).to.eql('foo');
       });
+
+      it("keeps the text from within the element escaped", function() {
+        var heading = document.createElement('h1');
+        heading.innerText = '&lt;script&gt;foo&lt;/script&gt;';
+        var navItem = Toc.helpers.generateNavItem(heading)[0];
+        expect(navItem.textContent).to.eql('&lt;script&gt;foo&lt;/script&gt;');
+      });
+
+      it("keeps the data-toc-text escaped", function() {
+        var heading = document.createElement('h1');
+        heading.setAttribute('data-toc-text', '&lt;script&gt;foo&lt;/script&gt;')
+        heading.innerText = 'bar';
+        var $navItem = Toc.helpers.generateNavItem(heading);
+        expect($navItem.text()).to.eql('&lt;script&gt;foo&lt;/script&gt;');
+      });
     });
 
     describe('.generateUniqueIdBase()', function() {

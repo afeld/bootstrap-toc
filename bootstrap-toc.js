@@ -56,11 +56,20 @@
         return $childList;
       },
 
+      generateNavEl: function(anchor, text) {
+        var $a = $('<a></a>');
+        $a.attr('href', '#' + anchor);
+        $a.text(text);
+        var $li = $('<li></li>');
+        $li.append($a);
+        return $li;
+      },
+
       generateNavItem: function(headingEl) {
         var anchor = this.generateAnchor(headingEl);
         var $heading = $(headingEl);
         var text = $heading.data('toc-text') || $heading.text();
-        return $('<li><a href="#' + anchor + '">' + text + '</a></li>');
+        return this.generateNavEl(anchor, text);
       },
 
       // Find the first heading level (`<h1>`, then `<h2>`, etc.) that has more than one element. Defaults to 1 (for `<h1>`).

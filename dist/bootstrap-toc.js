@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Table of Contents v0.4.0 (http://afeld.github.io/bootstrap-toc/)
+ * Bootstrap Table of Contents v0.4.1 (http://afeld.github.io/bootstrap-toc/)
  * Copyright 2015 Aidan Feldman
  * Licensed under MIT (https://github.com/afeld/bootstrap-toc/blob/gh-pages/LICENSE.md) */
 (function() {
@@ -56,11 +56,20 @@
         return $childList;
       },
 
+      generateNavEl: function(anchor, text) {
+        var $a = $('<a></a>');
+        $a.attr('href', '#' + anchor);
+        $a.text(text);
+        var $li = $('<li></li>');
+        $li.append($a);
+        return $li;
+      },
+
       generateNavItem: function(headingEl) {
         var anchor = this.generateAnchor(headingEl);
         var $heading = $(headingEl);
         var text = $heading.data('toc-text') || $heading.text();
-        return $('<li><a href="#' + anchor + '">' + text + '</a></li>');
+        return this.generateNavEl(anchor, text);
       },
 
       // Find the first heading level (`<h1>`, then `<h2>`, etc.) that has more than one element. Defaults to 1 (for `<h1>`).

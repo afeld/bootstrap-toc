@@ -154,6 +154,72 @@ nav[data-toggle='toc'] {
 }
 ```
 
+## Additional options
+
+By default, the plugin finds the first heading level (`<h1>`, then `<h2>`, etc.) that has more than one element and defaults to 1 (for `<h1>`). The identified level becomes the top heading and the plugin supports a single nesting level associated to it, including the subsequent heading only. E.g., if the identified top level is `<h1>`, the nested level will be `<h2>`, which is the next below it; if the top level is `<h2>`, the nested one will be `<h3>`. No additional level to the nested one and no previous level to the top one will be shown.
+
+The plugin allows options to customize this behavior:
+
+* `headings` (which can be a string): if set to a list of headers (in the form *hN,hM,...* where N, M, ... are levels, e.g., `h1,h2,h3`), all of them are searched instead of the first declared one and of its subsequent heading. Example: `headings: 'h1,h2,h3,h4,h5,h6'` (in this case, all of them are searched and not only `<h2>` and `<h3>` in case `<h2>` is the top level).
+* `class`: (which can be a string): if set to a string, its value is used to customize the CSS class that the plugin sets for each description, concatenating it with the related header level. If not set, the default class heading will be `toc-nav-h`. Example: by default, a top level description (`<h1>`) has class`toc-nav-h1`, a second level description (`<h2>`) has class `toc-nav-h2`, etc. If the option `class` is set to e.g. `my-class`, a top level description (`<h1>`) will have class `my-class-h1`, a second level description (`<h2>`) will have class `my-class-h2`, etc. This feature allows adding CSS attributes to customize the descriptions according its header level.
+
+Example of usage:
+
+```javascript
+Toc.init($myNav, {
+  headings: 'h1,h2,h3,h4,h5,h6',
+  class: 'my-class'
+});
+```
+
+Example of CSS to customize the behavior of the plugin where the target documentation is supposed to mostly exploit `<h2>` as top level and `<h3>` as neighboring one (supposing to set `headings: 'h1,h2,h3,h4,h5,h6'` and not to change the default `class` option):
+
+```css
+/*
+ * Customizations of Bootstrap Table of Contents v0.4.2
+ */
+nav[data-toggle='toc'] .nav .nav > li > a {
+  padding-bottom: 3px !important;
+}
+.toc-nav-h1 {
+  text-decoration: navy dotted underline;
+  font-size: 15px !important;
+  padding-left: 15px !important;
+}
+.toc-nav-h4 {
+  font-size: 11px !important;
+  padding-left: 40px !important;
+}
+.toc-nav-h5 {
+  font-size: 11px !important;
+  padding-left: 46px !important;
+}
+.toc-nav-h6 {
+  font-size: 11px !important;
+  padding-left: 52px !important;
+}
+```
+
+The following example includes an additional setting for scrollspy (both `target` and `offset` options are used:
+
+```html
+<script>
+try {
+  $(function() {
+    var navSelector = '#toc';
+    var $myNav = $(navSelector);
+    Toc.init($myNav, { headings: 'h1,h2,h3,h4,h5,h6' } );
+    $('body').scrollspy({
+      target: navSelector,
+      offset: 220
+    });
+  });
+}
+catch(e) {
+}
+</script>
+```
+
 ## See also
 
 This plugin was heavily inspired by:

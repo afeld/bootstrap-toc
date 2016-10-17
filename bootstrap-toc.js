@@ -1,7 +1,12 @@
 /*!
  * Bootstrap Table of Contents v<%= version %> (http://afeld.github.io/bootstrap-toc/)
  * Copyright 2015 Aidan Feldman
- * Licensed under MIT (https://github.com/afeld/bootstrap-toc/blob/gh-pages/LICENSE.md) */
+ * Licensed under MIT (https://github.com/afeld/bootstrap-toc/blob/gh-pages/LICENSE.md)
+ *
+ * Modified by Ircama, 2016, adding the following options:
+ * - headings
+ * - class
+ */
 (function() {
   'use strict';
 
@@ -56,8 +61,8 @@
         return $childList;
       },
 
-      generateNavEl: function(anchor, text) {
-        var $a = $('<a></a>');
+      generateNavEl: function(anchor, text, navLevel, hClass) {
+        var $a = $('<a class=' + hClass + navLevel + '></a>');
         $a.attr('href', '#' + anchor);
         $a.text(text);
         var $li = $('<li></li>');
@@ -65,11 +70,11 @@
         return $li;
       },
 
-      generateNavItem: function(headingEl) {
+      generateNavItem: function(headingEl, navLevel, hClass) {
         var anchor = this.generateAnchor(headingEl);
         var $heading = $(headingEl);
         var text = $heading.data('toc-text') || $heading.text();
-        return this.generateNavEl(anchor, text);
+        return this.generateNavEl(anchor, text, navLevel, hClass);
       },
 
       // Find the first heading level (`<h1>`, then `<h2>`, etc.) that has more than one element. Defaults to 1 (for `<h1>`).
@@ -85,30 +90,34 @@
       },
 
       // returns the elements for the top level, and the next below it
-      getHeadings: function($scope, topLevel) {
-        var topSelector = 'h' + topLevel;
-
-        var secondaryLevel = topLevel + 1;
-        var secondarySelector = 'h' + secondaryLevel;
-
-        return this.findOrFilter($scope, topSelector + ',' + secondarySelector);
+      getHeadings: function($scope, topLevel, headingList) {
+          if (headingList === undefined) {
+          var topSelector = 'h' + topLevel;
+  
+          var secondaryLevel = topLevel + 1;
+          var secondarySelector = 'h' + secondaryLevel;
+  
+          return this.findOrFilter($scope, topSelector + ',' + secondarySelector);
+        } else {
+          return this.findOrFilter($scope, headingList);
+        }
       },
 
       getNavLevel: function(el) {
         return parseInt(el.tagName.charAt(1), 10);
       },
 
-      populateNav: function($topContext, topLevel, $headings) {
+      populateNav: function($topContext, topLevel, $headings, hClass) {
         var $context = $topContext;
         var $prevNav;
 
         var helpers = this;
         $headings.each(function(i, el) {
-          var $newNav = helpers.generateNavItem(el);
           var navLevel = helpers.getNavLevel(el);
+          var $newNav = helpers.generateNavItem(el, navLevel, hClass);
 
           // determine the proper $context
-          if (navLevel === topLevel) {
+          if (navLevel <= topLevel) {
             // use top level
             $context = $topContext;
           } else if ($prevNav && $context === $topContext) {
@@ -137,16 +146,18 @@
     },
 
     // accepts a jQuery object, or an options object
-    init: function(opts) {
+    init: function(opts, conf) {
       opts = this.helpers.parseOps(opts);
+      var headingList = conf === undefined ? undefined : conf.headings;
+      var hClass = conf === undefined || conf.class === undefined || conf.class == '' ? 'toc-nav-h' : conf.class;
 
       // ensure that the data attribute is in place for styling
       opts.$nav.attr('data-toggle', 'toc');
 
       var $topContext = this.helpers.createChildNavList(opts.$nav);
       var topLevel = this.helpers.getTopLevel(opts.$scope);
-      var $headings = this.helpers.getHeadings(opts.$scope, topLevel);
-      this.helpers.populateNav($topContext, topLevel, $headings);
+      var $headings = this.helpers.getHeadings(opts.$scope, topLevel, headingList);
+      this.helpers.populateNav($topContext, topLevel, $headings, hClass);
     }
   };
 

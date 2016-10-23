@@ -86,11 +86,41 @@ describe('Toc', function() {
             '<h6></h6>' +
           '</div>'
         );
-        var opts = {
-          $includeAll: true
-        };
-        var level = Toc.helpers.getTopLevel($scope, opts);
+        var level = Toc.helpers.getTopLevel($scope, 1, true);
         expect(level).to.eql(1);
+      });
+
+      it("returns the specified start level if include all specified", function() {
+        var $scope = $(
+          '<div>' +
+            '<h1></h1>' +
+            '<h2></h2>' +
+            '<h3></h3>' +
+            '<h4></h4>' +
+            '<h5></h5>' +
+            '<h6></h6>' +
+            '<h6></h6>' +
+          '</div>'
+        );
+        var level = Toc.helpers.getTopLevel($scope, 2, true);
+        expect(level).to.eql(2);
+      });
+
+      it("returns the first level with more than one element sarting with start level", function() {
+        var $scope = $(
+          '<div>' +
+            '<h1></h1>' +
+            '<h2></h2>' +
+            '<h2></h2>' +
+            '<h3></h3>' +
+            '<h4></h4>' +
+            '<h5></h5>' +
+            '<h6></h6>' +
+            '<h6></h6>' +
+          '</div>'
+        );
+        var level = Toc.helpers.getTopLevel($scope, 3);
+        expect(level).to.eql(6);
       });
     });
 

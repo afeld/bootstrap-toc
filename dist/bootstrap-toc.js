@@ -63,16 +63,18 @@
         return $('<li><a href="#' + anchor + '">' + text + '</a></li>');
       },
 
-      // Find the first heading level (`<h1>`, then `<h2>`, etc.) that has more than one element. Defaults to 1 (for `<h1>`).
-      getTopLevel: function($scope, $includeAllHeaders) {
-        for (var i = 1; i <= 6; i++) {
+      // Find the first heading level (`<h1>`, then `<h2>`, etc.) that has more than one element.
+      // if $includeAllHeaders is true headers with only one child will be used as top level as well.
+      // Defaults to startLevel or 1 is start level is not specified (for `<h1>`).
+      getTopLevel: function($scope, $startLevel, $includeAllHeaders) {
+        $startLevel = $startLevel || 1;
+        for (var i = $startLevel; i <= 6; i++) {
           var $headings = this.findOrFilter($scope, 'h' + i);
           if ($headings.length > 1 || $includeAllHeaders) {
             return i;
           }
         }
-
-        return 1;
+        return $startLevel;
       },
 
       // returns the elements for the top level, and the next below it
@@ -122,8 +124,11 @@
         } else {
           opts = arg;
         }
+
         opts.$scope = opts.$scope || $(document.body);
+        opts.$startLevel = opts.$startLevel || 1;
         opts.$includeAllHeaders = opts.$includeAllHeaders || false;
+
         return opts;
       }
     },
@@ -136,7 +141,7 @@
       opts.$nav.attr('data-toggle', 'toc');
 
       var $topContext = this.helpers.createChildNavList(opts.$nav);
-      var topLevel = this.helpers.getTopLevel(opts.$scope, opts.$includeAllHeaders);
+      var topLevel = this.helpers.getTopLevel(opts.$scope, opts.$startLevel, opts.$includeAllHeaders);
       var $headings = this.helpers.getHeadings(opts.$scope, topLevel);
       this.helpers.populateNav($topContext, topLevel, $headings);
     }

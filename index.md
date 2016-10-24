@@ -156,6 +156,7 @@ nav[data-toggle='toc'] {
 
 ## See also
 
+* [Adding links to all headings on your page](http://bryanbraun.github.io/anchorjs/)
 * [Updating the URL hash based on scroll](https://gist.github.com/iamravenous/4a1545dc3ccd24abf89e)
 
 This plugin was heavily inspired by:
@@ -166,20 +167,4 @@ This plugin was heavily inspired by:
 
 ## Contributing
 
-Questions, feature suggestions, and bug reports/fixes welcome!
-
-### Manual testing
-
-1. Run `bundle`.
-1. Run `bundle exec jekyll serve`.
-1. Open the various test templates:
-    * [H2's](http://localhost:4000/bootstrap-toc/test/templates/h2s.html)
-    * [Markdown](http://localhost:4000/bootstrap-toc/test/templates/markdown.html)
-    * [No IDs](http://localhost:4000/bootstrap-toc/test/templates/no-ids.html)
-
-### Automated testing
-
-1. Run `npm install`.
-1. Run `gulp test`/`gulp watch` (command-line), or `open test/index.html` (browser).
-
-You can find the tests in [`test/toc-test.js`](test/toc-test.js).
+See the [CONTRIBUTING](https://github.com/afeld/bootstrap-toc/blob/gh-pages/CONTRIBUTING.md) file.

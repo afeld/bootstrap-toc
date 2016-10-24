@@ -1,7 +1,7 @@
 The MIT License (MIT)
 =====================
 
-Copyright © 2015 Aidan Feldman
+Copyright © 2015-2016 Aidan Feldman
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation

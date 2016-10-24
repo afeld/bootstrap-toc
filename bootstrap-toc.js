@@ -2,7 +2,7 @@
  * Bootstrap Table of Contents v<%= version %> (http://afeld.github.io/bootstrap-toc/)
  * Copyright 2015 Aidan Feldman
  * Licensed under MIT (https://github.com/afeld/bootstrap-toc/blob/gh-pages/LICENSE.md) */
-(function() {
+(function($) {
   'use strict';
 
   window.Toc = {
@@ -156,4 +156,4 @@
       Toc.init($nav);
     });
   });
-})();
+})(jQuery);

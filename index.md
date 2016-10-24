@@ -162,14 +162,11 @@ nav[data-toggle='toc'] {
 ## See also
 
 * [Adding links to all headings on your page](http://bryanbraun.github.io/anchorjs/)
+* [Contributor information](https://github.com/afeld/bootstrap-toc/blob/gh-pages/CONTRIBUTING.md)
 * [Updating the URL hash based on scroll](https://gist.github.com/iamravenous/4a1545dc3ccd24abf89e)
 
-### Inspiration
+This plugin was heavily inspired by:
 
 * [Bootstrap Docs Sidebar example](https://jsfiddle.net/gableroux/S2SMK/)
 * [Tocify plugin](http://gregfranko.com/jquery.tocify.js/)
 * [TOC plugin](http://projects.jga.me/toc/)
-
-## Contributing
-
-See the [CONTRIBUTING](https://github.com/afeld/bootstrap-toc/blob/gh-pages/CONTRIBUTING.md) file.

@@ -154,12 +154,17 @@ nav[data-toggle='toc'] {
 }
 ```
 
+## Examples
+
+* [Advanced JS course syllabus](https://advanced-js.github.io/syllabus/)
+* [OpenStreetMap Carto Tutorials](https://ircama.github.io/osm-carto-tutorials/tile-server-ubuntu/)
+
 ## See also
 
 * [Adding links to all headings on your page](http://bryanbraun.github.io/anchorjs/)
 * [Updating the URL hash based on scroll](https://gist.github.com/iamravenous/4a1545dc3ccd24abf89e)
 
-This plugin was heavily inspired by:
+### Inspiration
 
 * [Bootstrap Docs Sidebar example](https://jsfiddle.net/gableroux/S2SMK/)
 * [Tocify plugin](http://gregfranko.com/jquery.tocify.js/)

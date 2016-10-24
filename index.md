@@ -156,6 +156,8 @@ nav[data-toggle='toc'] {
 
 ## See also
 
+* [Updating the URL hash based on scroll](https://gist.github.com/iamravenous/4a1545dc3ccd24abf89e)
+
 This plugin was heavily inspired by:
 
 * [Bootstrap Docs Sidebar example](https://jsfiddle.net/gableroux/S2SMK/)

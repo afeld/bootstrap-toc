@@ -118,16 +118,18 @@ describe('Toc', function() {
         $scope: $fixture
       });
 
+      var baseLocation = location.href.replace(location.hash, '');
+
       expect($nav.html()).to.eql(
         '<ul class="nav">' +
           '<li>' +
-            '<a href="#h1">H1</a>' +
+            '<a href="' + baseLocation + '#h1">H1</a>' +
           '</li>' +
           '<li>' +
-            '<a href="#h1-1">H1</a>' +
+            '<a href="' + baseLocation + '#h1-1">H1</a>' +
           '</li>' +
           '<li>' +
-            '<a href="#h1-2">H1</a>' +
+            '<a href="' + baseLocation + '#h1-2">H1</a>' +
           '</li>' +
         '</ul>'
       );
@@ -145,13 +147,15 @@ describe('Toc', function() {
         $scope: $fixture
       });
 
+      var baseLocation = location.href.replace(location.hash, '');
+
       expect($nav.html()).to.eql(
         '<ul class="nav">' +
           '<li>' +
-            '<a href="#h1">H1</a>' +
+            '<a href="' + baseLocation + '#h1">H1</a>' +
           '</li>' +
           '<li>' +
-            '<a href="#h1-1">H1</a>' +
+            '<a href="' + baseLocation + '#h1-1">H1</a>' +
           '</li>' +
         '</ul>'
       );
@@ -171,18 +175,20 @@ describe('Toc', function() {
         $scope: $fixture
       });
 
+      var baseLocation = location.href.replace(location.hash, '');
+
       expect($nav.html()).to.eql(
         '<ul class="nav">' +
           '<li>' +
-            '<a href="#h2">H2</a>' +
+            '<a href="' + baseLocation + '#h2">H2</a>' +
             '<ul class="nav">' +
               '<li>' +
-                '<a href="#h3">H3</a>' +
+                '<a href="' + baseLocation + '#h3">H3</a>' +
               '</li>' +
             '</ul>' +
           '</li>' +
           '<li>' +
-            '<a href="#h2-1">H2-1</a>' +
+            '<a href="' + baseLocation + '#h2-1">H2-1</a>' +
           '</li>' +
         '</ul>'
       );
@@ -198,10 +204,12 @@ describe('Toc', function() {
         $scope: $h1
       });
 
+      var baseLocation = location.href.replace(location.hash, '');
+
       expect($nav.html()).to.eql(
         '<ul class="nav">' +
           '<li>' +
-            '<a href="#h1">H1</a>' +
+            '<a href="' + baseLocation + '#h1">H1</a>' +
           '</li>' +
         '</ul>'
       );

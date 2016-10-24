@@ -58,7 +58,7 @@
 
       generateNavEl: function(anchor, text) {
         var $a = $('<a></a>');
-        $a.attr('href', '#' + anchor);
+        $a.attr('href', location.href.replace(location.hash, '') + '#' + anchor);
         $a.text(text);
         var $li = $('<li></li>');
         $li.append($a);

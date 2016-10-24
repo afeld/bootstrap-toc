@@ -1,4 +1,4 @@
-Hi there—thanks for being interested in contributing! For starters, all questions, feature suggestions, and bug reports/fixes are welcome. That being said, some goals of this plugin are to stay simple/small, "just work", and not require a lot of configuration, so please don't be offended if any feature requests are politely declined.
+Hi there—thanks for being interested in contributing! For starters, all questions, feature suggestions, and bug reports/fixes are welcome. That being said, some goals of this plugin are to stay simple/small, "just work", and not require a lot of configuration, so please don't be offended if any feature requests are politely declined. For any feature/configuration additions, you might want to open an issue explaining the idea first before going through the trouble of implementing it.
 
 ## Manual testing
 
@@ -16,10 +16,9 @@ Hi there—thanks for being interested in contributing! For starters, all questi
 
 You can find the tests in [`test/toc-test.js`](test/toc-test.js).
 
-## Pull requests
+## Pull request guidelines
 
-A few things that are required before any pull request will be merged:
-
+* Keep the pull request small, and narrowly scoped (one bug fix, one feature, etc.)
 * The [`dist/`](dist/) directory contains the latest released version of the plugin, so please make any code changes in [`bootstrap-toc.js`](bootstrap-toc.js) and [`bootstrap-toc.css`](bootstrap-toc.css) _only_.
 * Don't update the `dist/` directory, bump the version, etc...these will be done by the maintainer(s) as part of a release.
 * Add/update [tests](test/toc-test.js) for functionality changes, additions, or fixes.

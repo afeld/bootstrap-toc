@@ -16,7 +16,7 @@
       },
 
       generateUniqueIdBase: function(el) {
-        var text = $(el).text();
+        var text = $(el).contents().not($(el).children()).text();
         var anchor = text.trim().toLowerCase().replace(/[^A-Za-z0-9]+/g, '-');
         return anchor || el.tagName.toLowerCase();
       },

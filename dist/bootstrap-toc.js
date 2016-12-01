@@ -40,6 +40,7 @@
         anchor = anchor.replace(/[Œ]/g, 'OE');
         anchor = anchor.replace(/[œ]/g, 'oe');
         anchor = anchor.replace(/[']/g, '');
+        anchor = anchor.replace(/[’]/g, '');
         anchor = anchor.replace(/[^A-Za-z0-9]+/g, '-');
 
         return anchor || el.tagName.toLowerCase();

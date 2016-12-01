@@ -17,7 +17,30 @@
 
       generateUniqueIdBase: function(el) {
         var text = $(el).contents().not($(el).children()).text();
-        var anchor = text.trim().toLowerCase().replace(/[^A-Za-z0-9ÀÂÄÈÉÊËÎÏÔŒÙÛÜŸàâäèéêëîïôœùûüÿ]+/g, '-');
+        var anchor = text.trim().toLowerCase();
+
+        anchor = anchor.replace(/[ÅÁÀÂÄ]/g,"A");
+        anchor = anchor.replace(/[åáàâä]/g,"a");
+        anchor = anchor.replace(/[ÉÈÊË]/g,"E");
+        anchor = anchor.replace(/[éèêë]/g,"e");
+        anchor = anchor.replace(/[ÍÎÏÌ]/g,"I");
+        anchor = anchor.replace(/[íìîï]/g,"i");
+        anchor = anchor.replace(/[ÓÒÔÖ]/g,"O");
+        anchor = anchor.replace(/[óòôö]/g,"o");
+        anchor = anchor.replace(/[ÚÙÛÜ]/g,"U");
+        anchor = anchor.replace(/[úùûü]/g,"u");
+        anchor = anchor.replace(/[Ÿ]/g,"Y");
+        anchor = anchor.replace(/[ÿ]/g,"y");
+        anchor = anchor.replace(/[Ø]/g,"O");
+        anchor = anchor.replace(/[ø]/g,"o");
+        anchor = anchor.replace(/[Ç]/g,"C");
+        anchor = anchor.replace(/[ç]/g,"c");
+        anchor = anchor.replace(/[Æ]/g,"AE");
+        anchor = anchor.replace(/[æ]/g,"ae");
+        anchor = anchor.replace(/[Œ]/g,"OE");
+        anchor = anchor.replace(/[œ]/g,"oe");
+        anchor = anchor.replace(/[^A-Za-z0-9]+/g, '-');
+
         return anchor || el.tagName.toLowerCase();
       },
 

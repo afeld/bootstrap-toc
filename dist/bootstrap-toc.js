@@ -29,6 +29,8 @@
         anchor = anchor.replace(/[íìîïīį]/g, 'i');
         anchor = anchor.replace(/[ÓÒÔÖŌÕØ]/g, 'O');
         anchor = anchor.replace(/[óòôöōõø]/g, 'o');
+        anchor = anchor.replace(/[ÑŃ]/g, 'n');
+        anchor = anchor.replace(/[ñń]/g, 'n');
         anchor = anchor.replace(/[ŚŠ]/g, 'S');
         anchor = anchor.replace(/[śš]/g, 's');
         anchor = anchor.replace(/[ß]/g, 'ss');

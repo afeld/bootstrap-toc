@@ -21,7 +21,7 @@
 
         anchor = anchor.replace(/[ÅÁÀÂÄĀÃ]/g, 'A');
         anchor = anchor.replace(/[åáàâäāã]/g, 'a');
-        anchor = anchor.replace(/[çćč]/g, 'C');
+        anchor = anchor.replace(/[ÇĆČ]/g, 'C');
         anchor = anchor.replace(/[çćč]/g, 'c');
         anchor = anchor.replace(/[ÉÈÊËĒĖĘ]/g, 'E');
         anchor = anchor.replace(/[éèêëēėę]/g, 'e');

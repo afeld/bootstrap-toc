@@ -42,6 +42,7 @@
         anchor = anchor.replace(/[']/g, '');
         anchor = anchor.replace(/[’]/g, '');
         anchor = anchor.replace(/[^A-Za-z0-9]+/g, '-');
+        anchor = anchor.replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'<>,.\/? ])+/g, '-').replace(/^(-)+|(-)+$/g,'');
 
         return anchor || el.tagName.toLowerCase();
       },

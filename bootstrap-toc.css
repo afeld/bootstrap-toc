@@ -33,7 +33,7 @@ nav[data-toggle='toc'] .nav > .active:focus > a {
 
 /* Nav: second level (shown on .active) */
 nav[data-toggle='toc'] .nav .nav {
-  display: none; /* Hide by default, but at >768px, show it */
+  display: none; /* Hide by default */
   padding-bottom: 10px;
 }
 nav[data-toggle='toc'] .nav .nav > li > a {
@@ -56,5 +56,9 @@ nav[data-toggle='toc'] .nav .nav > .active:focus > a {
 
 /* from https://github.com/twbs/bootstrap/blob/e38f066d8c203c3e032da0ff23cd2d6098ee2dd6/docs/assets/css/src/docs.css#L631-L634 */
 nav[data-toggle='toc'] .nav > .active > ul {
+  display: block;
+}
+
+nav[data-toggle='toc'] li:hover .nav {
   display: block;
 }

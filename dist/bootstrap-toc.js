@@ -1,7 +1,8 @@
 /*!
- * Bootstrap Table of Contents v0.4.0 (http://afeld.github.io/bootstrap-toc/)
+ * Bootstrap Table of Contents v0.4.0-ottv3 (http://afeld.github.io/bootstrap-toc/)
  * Copyright 2015 Aidan Feldman
- * Licensed under MIT (https://github.com/afeld/bootstrap-toc/blob/gh-pages/LICENSE.md) */
+ * Licensed under MIT (https://github.com/afeld/bootstrap-toc/blob/gh-pages/LICENSE.md)
+ * Modified by the City of Ottawa */
 (function($) {
   'use strict';
 

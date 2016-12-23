@@ -1,7 +1,8 @@
 /*!
- * Bootstrap Table of Contents v0.4.0 (http://afeld.github.io/bootstrap-toc/)
+ * Bootstrap Table of Contents v0.4.0-ottv3 (http://afeld.github.io/bootstrap-toc/)
  * Copyright 2015 Aidan Feldman
- * Licensed under MIT (https://github.com/afeld/bootstrap-toc/blob/gh-pages/LICENSE.md) */
+ * Licensed under MIT (https://github.com/afeld/bootstrap-toc/blob/gh-pages/LICENSE.md)
+ * Modified by the City of Ottawa */
 (function($) {
   'use strict';
 
@@ -48,8 +49,10 @@
         anchor = anchor.replace(/[œ]/g, 'oe');
         anchor = anchor.replace(/[']/g, '');
         anchor = anchor.replace(/[’]/g, '');
-        anchor = anchor.replace(/[^A-Za-z0-9]+/g, '-');
+        anchor = anchor.replace(/\ba\b|\ban\b|\bas\b|\bat\b|\bbefore\b|\bbut\b|\bby\b|\bfor\b|\bfrom\b|\bis\b|\bin\b|\binto\b|\blike\b|\bof\b|\boff\b|\bon\b|\bonto\b|\bper\b|\bsince\b|\bthan\b|\bthe\b|\bthis\b|\bthat\b|\bto\b|\bup\b|\bvia\b|\bwith\b/g, '');
+        anchor = anchor.replace(/\s+/g,'-');
         anchor = anchor.replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'<>,.\/? ])+/g, '-').replace(/^(-)+|(-)+$/g,'');
+        anchor = anchor.replace(/[^A-Za-z0-9]+/g, '-');
 
         return anchor || el.tagName.toLowerCase();
       },

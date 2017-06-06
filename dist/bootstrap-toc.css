@@ -39,22 +39,134 @@ nav[data-toggle='toc'] .nav .nav {
 nav[data-toggle='toc'] .nav .nav > li > a {
   padding-top: 1px;
   padding-bottom: 1px;
-  padding-left: 30px;
+  padding-left: 30px; /* Add 10 per level */
   font-size: 12px;
   font-weight: normal;
 }
 nav[data-toggle='toc'] .nav .nav > li > a:hover,
 nav[data-toggle='toc'] .nav .nav > li > a:focus {
-  padding-left: 29px;
+  padding-left: 29px; /* Add 10 per level */
 }
 nav[data-toggle='toc'] .nav .nav > .active > a,
 nav[data-toggle='toc'] .nav .nav > .active:hover > a,
 nav[data-toggle='toc'] .nav .nav > .active:focus > a {
-  padding-left: 28px;
+  padding-left: 28px; /* Add 10 per level */
   font-weight: 500;
 }
 
 /* from https://github.com/twbs/bootstrap/blob/e38f066d8c203c3e032da0ff23cd2d6098ee2dd6/docs/assets/css/src/docs.css#L631-L634 */
 nav[data-toggle='toc'] .nav > .active > ul {
+  display: block;
+}
+
+/* Nav: third level (shown on .active) */
+nav[data-toggle='toc'] .nav .nav .nav {
+  display: none; /* Hide by default, but at >768px, show it */
+  padding-bottom: 10px;
+}
+nav[data-toggle='toc'] .nav .nav .nav > li > a {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 40px; /* Add 10 per level */
+  font-size: 12px;
+  font-weight: normal;
+}
+nav[data-toggle='toc'] .nav .nav .nav > li > a:hover,
+nav[data-toggle='toc'] .nav .nav .nav > li > a:focus {
+  padding-left: 39px; /* Add 10 per level */
+}
+nav[data-toggle='toc'] .nav .nav .nav > .active > a,
+nav[data-toggle='toc'] .nav .nav .nav > .active:hover > a,
+nav[data-toggle='toc'] .nav .nav .nav > .active:focus > a {
+  padding-left: 38px; /* Add 10 per level */
+  font-weight: 500;
+}
+
+/* from https://github.com/twbs/bootstrap/blob/e38f066d8c203c3e032da0ff23cd2d6098ee2dd6/docs/assets/css/src/docs.css#L631-L634 */
+nav[data-toggle='toc'] .nav .nav > .active > ul {
+  display: block;
+}
+
+/* Nav: fourth level (shown on .active) */
+nav[data-toggle='toc'] .nav .nav .nav .nav {
+  display: none; /* Hide by default, but at >768px, show it */
+  padding-bottom: 10px;
+}
+nav[data-toggle='toc'] .nav .nav .nav .nav > li > a {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 50px; /* Add 10 per level */
+  font-size: 12px;
+  font-weight: normal;
+}
+nav[data-toggle='toc'] .nav .nav .nav .nav > li > a:hover,
+nav[data-toggle='toc'] .nav .nav .nav .nav > li > a:focus {
+  padding-left: 49px; /* Add 10 per level */
+}
+nav[data-toggle='toc'] .nav .nav .nav .nav > .active > a,
+nav[data-toggle='toc'] .nav .nav .nav .nav > .active:hover > a,
+nav[data-toggle='toc'] .nav .nav .nav .nav > .active:focus > a {
+  padding-left: 48px; /* Add 10 per level */
+  font-weight: 500;
+}
+
+/* from https://github.com/twbs/bootstrap/blob/e38f066d8c203c3e032da0ff23cd2d6098ee2dd6/docs/assets/css/src/docs.css#L631-L634 */
+nav[data-toggle='toc'] .nav .nav .nav > .active > ul {
+  display: block;
+}
+
+/* Nav: fifth level (shown on .active) */
+nav[data-toggle='toc'] .nav .nav .nav .nav .nav {
+  display: none; /* Hide by default, but at >768px, show it */
+  padding-bottom: 10px;
+}
+nav[data-toggle='toc'] .nav .nav .nav .nav .nav > li > a {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 60px; /* Add 10 per level */
+  font-size: 12px;
+  font-weight: normal;
+}
+nav[data-toggle='toc'] .nav .nav .nav .nav .nav > li > a:hover,
+nav[data-toggle='toc'] .nav .nav .nav .nav .nav > li > a:focus {
+  padding-left: 59px; /* Add 10 per level */
+}
+nav[data-toggle='toc'] .nav .nav .nav .nav .nav > .active > a,
+nav[data-toggle='toc'] .nav .nav .nav .nav .nav > .active:hover > a,
+nav[data-toggle='toc'] .nav .nav .nav .nav .nav > .active:focus > a {
+  padding-left: 58px; /* Add 10 per level */
+  font-weight: 500;
+}
+
+/* from https://github.com/twbs/bootstrap/blob/e38f066d8c203c3e032da0ff23cd2d6098ee2dd6/docs/assets/css/src/docs.css#L631-L634 */
+nav[data-toggle='toc'] .nav .nav .nav .nav > .active > ul {
+  display: block;
+}
+
+/* Nav: sixth level (shown on .active) */
+nav[data-toggle='toc'] .nav .nav .nav .nav .nav .nav {
+  display: none; /* Hide by default, but at >768px, show it */
+  padding-bottom: 10px;
+}
+nav[data-toggle='toc'] .nav .nav .nav .nav .nav .nav > li > a {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 70px; /* Add 10 per level */
+  font-size: 12px;
+  font-weight: normal;
+}
+nav[data-toggle='toc'] .nav .nav .nav .nav .nav .nav > li > a:hover,
+nav[data-toggle='toc'] .nav .nav .nav .nav .nav .nav > li > a:focus {
+  padding-left: 69px; /* Add 10 per level */
+}
+nav[data-toggle='toc'] .nav .nav .nav .nav .nav .nav > .active > a,
+nav[data-toggle='toc'] .nav .nav .nav .nav .nav .nav > .active:hover > a,
+nav[data-toggle='toc'] .nav .nav .nav .nav .nav .nav > .active:focus > a {
+  padding-left: 68px; /* Add 10 per level */
+  font-weight: 500;
+}
+
+/* from https://github.com/twbs/bootstrap/blob/e38f066d8c203c3e032da0ff23cd2d6098ee2dd6/docs/assets/css/src/docs.css#L631-L634 */
+nav[data-toggle='toc'] .nav .nav .nav .nav .nav > .active > ul {
   display: block;
 }

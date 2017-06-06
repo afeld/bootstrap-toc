@@ -83,42 +83,70 @@
 
         return 1;
       },
+      
+      // get the last level to evaluate until (i.e. default starting h1, last level will be 2 so we will evaluate all h1 and h2 elements)
+      getLastLevel: function($nav, topLevel) {
+		  // get the max number of levels to generate (default 2)
+		  var levels = 2;
+		  var levelsAttr = $nav.attr('data-levels');
+		  if ($.isNumeric(levelsAttr)) {
+			levels = parseInt(levelsAttr);
+		  }
 
-      // returns the elements for the top level, and the next below it
-      getHeadings: function($scope, topLevel) {
-        var topSelector = 'h' + topLevel;
+		  var lastLevel = topLevel + levels - 1;
+		  if (lastLevel > 6) return 6;
+		  if (lastLevel < topLevel) return topLevel;
+		  return lastLevel;
+      },
 
-        var secondaryLevel = topLevel + 1;
-        var secondarySelector = 'h' + secondaryLevel;
-
-        return this.findOrFilter($scope, topSelector + ',' + secondarySelector);
+      // returns the elements for given level range
+      getHeadings: function($scope, startLevel, endLevel) {
+		var filter = 'h' + startLevel;
+		for (var i = startLevel + 1; i <= endLevel; ++i) {
+		  filter += ',h' + i;
+		}
+        return this.findOrFilter($scope, filter);
       },
 
       getNavLevel: function(el) {
         return parseInt(el.tagName.charAt(1), 10);
       },
 
-      populateNav: function($topContext, topLevel, $headings) {
-        var $context = $topContext;
-        var $prevNav;
-
+      populateNav: function($context, $headings, firstLevel, lastLevel) {
         var helpers = this;
+        var contexts = [];
+        var curLevel = firstLevel;
+        var $curContext = $context;
+        var $prevNav;
         $headings.each(function(i, el) {
-          var $newNav = helpers.generateNavItem(el);
           var navLevel = helpers.getNavLevel(el);
-
-          // determine the proper $context
-          if (navLevel === topLevel) {
-            // use top level
-            $context = $topContext;
-          } else if ($prevNav && $context === $topContext) {
-            // create a new level of the tree and switch to it
-            $context = helpers.createChildNavList($prevNav);
-          } // else use the current $context
-
-          $context.append($newNav);
-
-          $prevNav = $newNav;
+          
+          if (navLevel == curLevel + 1) {
+		    if (curLevel == lastLevel || !$prevNav) {
+		      return;
+		    }
+		    
+		    contexts.push($curContext);
+		    $curContext = helpers.createChildNavList($prevNav);
+		    ++curLevel;
+          }
+          else if (navLevel < curLevel) {
+            if (navLevel < firstLevel) {
+              return;
+            }
+            
+            while (curLevel > navLevel) {
+			  $curContext = contexts.pop();
+              --curLevel;
+            }
+          }
+          
+          if (navLevel != curLevel) {
+            return;
+          }
+          
+          $prevNav = helpers.generateNavItem(el);
+          $curContext.append($prevNav);
         });
       },
 
@@ -140,13 +168,15 @@
     init: function(opts) {
       opts = this.helpers.parseOps(opts);
 
-      // ensure that the data attribute is in place for styling
-      opts.$nav.attr('data-toggle', 'toc');
+	  // ensure that the data attribute is in place for styling
+	  opts.$nav.attr('data-toggle', 'toc');
 
       var $topContext = this.helpers.createChildNavList(opts.$nav);
       var topLevel = this.helpers.getTopLevel(opts.$scope);
-      var $headings = this.helpers.getHeadings(opts.$scope, topLevel);
-      this.helpers.populateNav($topContext, topLevel, $headings);
+      var lastLevel = this.helpers.getLastLevel(opts.$nav, topLevel);
+      
+      var $headings = this.helpers.getHeadings(opts.$scope, topLevel, lastLevel);
+      this.helpers.populateNav($topContext, $headings, topLevel, lastLevel);
     }
   };
 

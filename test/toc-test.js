@@ -89,7 +89,47 @@ describe('Toc', function() {
         expect(level).to.eql(6);
       });
     });
+    
+    describe('.getLastLevel()', function() {
+      it("returns 2 by default", function() {
+        var $nav = $('<nav></nav>');
+        var level = Toc.helpers.getLastLevel($nav, 1);
+        expect(level).to.eql(2);
+      });
 
+      it("Start level plus user specified levels", function() {
+        var $nav = $(
+          '<nav data-levels="3"></nav>'
+        );
+        var level = Toc.helpers.getLastLevel($nav, 2);
+        expect(level).to.eql(4);
+      });
+
+      it("Cap out at level 6", function() {
+        var $nav = $(
+          '<nav data-levels="3"></nav>'
+        );
+        var level = Toc.helpers.getLastLevel($nav, 5);
+        expect(level).to.eql(6);
+      });
+
+      it("Handles invalid data", function() {
+        var $nav = $(
+          '<nav data-levels="hello"></nav>'
+        );
+        var level = Toc.helpers.getLastLevel($nav, 1);
+        expect(level).to.eql(2);
+      });
+      
+      it("Handles negative data", function() {
+        var $nav = $(
+          '<nav data-levels="-5"></nav>'
+        );
+        var level = Toc.helpers.getLastLevel($nav, 1);
+        expect(level).to.eql(1);
+      });
+    });
+    
     describe('.getNavLevel()', function() {
       it("returns the value from the tag", function() {
         var el = document.createElement('h5');
@@ -206,5 +246,105 @@ describe('Toc', function() {
         '</ul>'
       );
     });
+
+    it("handles up to 6 nested headings", function() {
+      $fixture.append(
+        '<h1>H1</h1>' +
+        '<h2>H2</h2>' +
+        '<h3>H3</h3>' +
+        '<h4>H4</h4>' +
+        '<h5>H5</h5>' +
+        '<h6>H6</h6>'
+      );
+      
+      $nav = $(
+          '<nav data-levels="6"></nav>'
+        );
+
+      Toc.init({
+        $nav: $nav,
+        $scope: $fixture
+      });
+
+      expect($nav.html()).to.eql(
+        '<ul class="nav">' +
+          '<li>' +
+            '<a href="#h1">H1</a>' +
+            '<ul class="nav">' +
+              '<li>' +
+                '<a href="#h2">H2</a>' +
+				'<ul class="nav">' +
+				  '<li>' +
+					'<a href="#h3">H3</a>' +
+					'<ul class="nav">' +
+					  '<li>' +
+						'<a href="#h4">H4</a>' +
+						'<ul class="nav">' +
+						  '<li>' +
+							'<a href="#h5">H5</a>' +
+							'<ul class="nav">' +
+							  '<li>' +
+								'<a href="#h6">H6</a>' +
+							  '</li>' +
+							'</ul>' +
+						  '</li>' +
+						'</ul>' +
+					  '</li>' +
+					'</ul>' +
+				  '</li>' +
+				'</ul>' +
+              '</li>' +
+            '</ul>' +
+          '</li>' +
+        '</ul>'
+      );
+    });
+
+    it("handles staggered nesting", function() {
+      $fixture.append(
+        '<h1>H1</h1>' +
+        '<h2>H2</h2>' +
+        '<h3>H3</h3>' +
+        '<h1>H1-1</h1>' + // expect drop from 3 to 1
+        '<h3>H3-1</h3>' + // intentionally in wrong spot, expect to skip, only handles one level change at a time
+        '<h2>H2-1</h2>'
+      );
+      
+      $nav = $(
+          '<nav data-levels="6"></nav>'
+        );
+
+      Toc.init({
+        $nav: $nav,
+        $scope: $fixture
+      });
+
+      expect($nav.html()).to.eql(
+        '<ul class="nav">' +
+          '<li>' +
+            '<a href="#h1">H1</a>' +
+            '<ul class="nav">' +
+              '<li>' +
+                '<a href="#h2">H2</a>' +
+				'<ul class="nav">' +
+				  '<li>' +
+					'<a href="#h3">H3</a>' +
+				  '</li>' +
+				'</ul>' +
+              '</li>' +
+            '</ul>' +
+          '</li>' +
+          '<li>' +
+            '<a href="#h1-1">H1-1</a>' +
+            '<ul class="nav">' +
+              '<li>' +
+                '<a href="#h2-1">H2-1</a>' +
+              '</li>' +
+            '</ul>' +
+          '</li>' +
+        '</ul>'
+      );
+    });
+    
   });
 });

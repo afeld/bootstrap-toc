@@ -83,6 +83,7 @@ option | type | notes
 --- | --- | ---
 `$nav` | jQuery Object | (required) The element that the navigation will be created in.
 `$scope` | jQuery Object | The element where the search for headings will be limited to, or the list of headings that will be used in the navigation. Defaults to `$(document.body)`.
+`depth` | Integer | The number of heading classes to consider, starting from the top level. Defaults to `2`.
 {: .table }
 
 ## Customization

@@ -97,7 +97,7 @@
             selector += ',';
         }
 
-				return this.findOrFilter($scope, selector);
+        return this.findOrFilter($scope, selector);
       },
 
       getNavLevel: function(el) {
@@ -111,9 +111,9 @@
         $contexts[0] = $topContext;
         $topContext.lastNav = null;
 
-				$headings.each(function(i, el) {
-					var $newNav = helpers.generateNavItem(el);
-					var navLevel = helpers.getNavLevel(el);
+        $headings.each(function(i, el) {
+          var $newNav = helpers.generateNavItem(el);
+          var navLevel = helpers.getNavLevel(el);
           var relLevel = navLevel - topLevel;
           var j;
 
@@ -135,9 +135,9 @@
             }
           }
 
-					$contexts[relLevel].append($newNav);
+          $contexts[relLevel].append($newNav);
           $contexts[relLevel].lastNav = $newNav;
-				});
+        });
       },
 
       parseOps: function(arg) {

@@ -11,6 +11,7 @@ nav[data-toggle='toc'] .nav > li > a {
   font-weight: 500;
   color: #767676;
   padding: 5px 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0);
 }
 
 nav[data-toggle='toc'] .nav > li > a:hover,

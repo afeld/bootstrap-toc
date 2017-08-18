@@ -8,24 +8,23 @@ permalink: /
 
 [![Build Status](https://travis-ci.org/afeld/bootstrap-toc.svg?branch=gh-pages)](https://travis-ci.org/afeld/bootstrap-toc)
 
-This [Bootstrap](http://getbootstrap.com/) plugin allows you to generate a table of contents for any page, based on the heading elements (`<h1>`, `<h2>`, etc.). It is meant to emulate the sidebar you see on [the Bootstrap documentation site](http://getbootstrap.com/css/).
+This [Bootstrap](http://getbootstrap.com/) plugin allows you to generate a table of contents for any page, based on the heading elements (`<h1>`, `<h2>`, etc.). It is meant to emulate the sidebar you see on [the Bootstrap v3 documentation site](https://getbootstrap.com/docs/3.3/css/).
 
 This page is an example of the plugin in action – the table of contents you see on the left (or top, on mobile) was automatically generated, without having to manually keep all of the navigation items in sync with the headings.
 
 ## Usage
 
-On top of the normal Bootstrap setup (see their [Getting Started](http://getbootstrap.com/getting-started/) guide), you will need to include the Bootstrap Table of Contents stylesheet and JavaScript file.
+1. Set up Bootstrap v3 or v4.
+1. Include the Bootstrap Table of Contents stylesheet and JavaScript file. [Unminified versions](https://github.com/afeld/bootstrap-toc/tree/gh-pages/dist) are also available.
 
-```html
-<!-- add after bootstrap.min.css -->
-<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
-<!-- add after bootstrap.min.js -->
-<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
-```
+    ```html
+    <!-- add after bootstrap.min.css -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+    <!-- add after bootstrap.min.js -->
+    <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+    ```
 
-[Unminified versions](https://github.com/afeld/bootstrap-toc/tree/gh-pages/dist) are also available.
-
-Next, pick one of the two options below.
+1. Pick one of the two options below.
 
 ### Via data attributes
 

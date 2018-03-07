@@ -47,7 +47,7 @@
       },
 
       createNavList: function() {
-        return $('<ul class="nav"></ul>');
+        return $('<ul class="nav navbar-nav"></ul>');
       },
 
       createChildNavList: function($parent) {
@@ -57,7 +57,7 @@
       },
 
       generateNavEl: function(anchor, text) {
-        var $a = $('<a></a>');
+        var $a = $('<a class="nav-link"></a>');
         $a.attr('href', '#' + anchor);
         $a.text(text);
         var $li = $('<li></li>');

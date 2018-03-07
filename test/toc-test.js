@@ -119,15 +119,15 @@ describe('Toc', function() {
       });
 
       expect($nav.html()).to.eql(
-        '<ul class="nav">' +
+        '<ul class="nav navbar-nav">' +
           '<li>' +
-            '<a href="#h1">H1</a>' +
+            '<a class="nav-link" href="#h1">H1</a>' +
           '</li>' +
           '<li>' +
-            '<a href="#h1-1">H1</a>' +
+            '<a class="nav-link" href="#h1-1">H1</a>' +
           '</li>' +
           '<li>' +
-            '<a href="#h1-2">H1</a>' +
+            '<a class="nav-link" href="#h1-2">H1</a>' +
           '</li>' +
         '</ul>'
       );
@@ -146,12 +146,12 @@ describe('Toc', function() {
       });
 
       expect($nav.html()).to.eql(
-        '<ul class="nav">' +
+        '<ul class="nav navbar-nav">' +
           '<li>' +
-            '<a href="#h1">H1</a>' +
+            '<a class="nav-link" href="#h1">H1</a>' +
           '</li>' +
           '<li>' +
-            '<a href="#h1-1">H1</a>' +
+            '<a class="nav-link" href="#h1-1">H1</a>' +
           '</li>' +
         '</ul>'
       );
@@ -172,17 +172,17 @@ describe('Toc', function() {
       });
 
       expect($nav.html()).to.eql(
-        '<ul class="nav">' +
+        '<ul class="nav navbar-nav">' +
           '<li>' +
-            '<a href="#h2">H2</a>' +
-            '<ul class="nav">' +
+            '<a class="nav-link" href="#h2">H2</a>' +
+            '<ul class="nav navbar-nav">' +
               '<li>' +
-                '<a href="#h3">H3</a>' +
+                '<a class="nav-link" href="#h3">H3</a>' +
               '</li>' +
             '</ul>' +
           '</li>' +
           '<li>' +
-            '<a href="#h2-1">H2-1</a>' +
+            '<a class="nav-link" href="#h2-1">H2-1</a>' +
           '</li>' +
         '</ul>'
       );
@@ -199,9 +199,9 @@ describe('Toc', function() {
       });
 
       expect($nav.html()).to.eql(
-        '<ul class="nav">' +
+        '<ul class="nav navbar-nav">' +
           '<li>' +
-            '<a href="#h1">H1</a>' +
+            '<a class="nav-link" href="#h1">H1</a>' +
           '</li>' +
         '</ul>'
       );

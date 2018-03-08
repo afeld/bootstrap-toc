@@ -14,7 +14,8 @@ This page is an example of the plugin in action – the table of contents you se
 
 ## Usage
 
-1. Set up Bootstrap v3 or v4.
+1. Set up Bootstrap v4.
+    * For Bootstrap v3, see [the older instructions](https://github.com/afeld/bootstrap-toc/blob/v0.4.1/index.md#usage).
 1. Include the Bootstrap Table of Contents stylesheet and JavaScript file. [Unminified versions](https://github.com/afeld/bootstrap-toc/tree/gh-pages/dist) are also available.
 
     ```html
@@ -108,7 +109,7 @@ To prevent a particular heading from being added to the table of contents, add a
 
 ## Layout
 
-This plugin isn't opinionated about where it should be placed on the page, but a common use case is to have the table of contents created as a "sticky" sidebar. ~~We will leverage the [Affix](http://getbootstrap.com/javascript/#affix) plugin for this, and wrap the `<nav>` element in a `<div>` with a Bootstrap column class (see information about the [Grid](http://getbootstrap.com/css/#grid)). As an example putting it all together (similar to this page):~~ [Affix](http://getbootstrap.com/javascript/#affix) has been deprecated as of Bootstrap 4.0 ([reference](https://v4-alpha.getbootstrap.com/migration/#components)). bootstrap-toc now uses `position: sticky;` instead.
+This plugin isn't opinionated about where it should be placed on the page, but a common use case is to have the table of contents created as a "sticky" sidebar.
 
 ```html
 <body data-spy="scroll" data-target="#toc">

@@ -48,9 +48,9 @@ nav[data-toggle='toc'] .nav .nav > li > a:hover,
 nav[data-toggle='toc'] .nav .nav > li > a:focus {
   padding-left: 29px;
 }
-nav[data-toggle='toc'] .nav .nav > .active > a,
-nav[data-toggle='toc'] .nav .nav > .active:hover > a,
-nav[data-toggle='toc'] .nav .nav > .active:focus > a {
+nav[data-toggle='toc'] .nav .nav > li > .active,
+nav[data-toggle='toc'] .nav .nav > li > .active:hover,
+nav[data-toggle='toc'] .nav .nav > li > .active:focus {
   padding-left: 28px;
   font-weight: 500;
 }

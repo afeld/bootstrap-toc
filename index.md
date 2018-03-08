@@ -108,7 +108,7 @@ To prevent a particular heading from being added to the table of contents, add a
 
 ## Layout
 
-This plugin isn't opinionated about where it should be placed on the page, but a common use case is to have the table of contents created as a "sticky" sidebar. We will leverage the [Affix](http://getbootstrap.com/javascript/#affix) plugin for this, and wrap the `<nav>` element in a `<div>` with a Bootstrap column class (see information about the [Grid](http://getbootstrap.com/css/#grid)). As an example putting it all together (similar to this page):
+This plugin isn't opinionated about where it should be placed on the page, but a common use case is to have the table of contents created as a "sticky" sidebar. ~~We will leverage the [Affix](http://getbootstrap.com/javascript/#affix) plugin for this, and wrap the `<nav>` element in a `<div>` with a Bootstrap column class (see information about the [Grid](http://getbootstrap.com/css/#grid)). As an example putting it all together (similar to this page):~~ [Affix](http://getbootstrap.com/javascript/#affix) has been deprecated as of Bootstrap 4.0 ([reference](https://v4-alpha.getbootstrap.com/migration/#components)). bootstrap-toc now uses `position: sticky;` instead.
 
 ```html
 <body data-spy="scroll" data-target="#toc">
@@ -116,7 +116,7 @@ This plugin isn't opinionated about where it should be placed on the page, but a
     <div class="row">
       <!-- sidebar, which will move to the top on a small screen -->
       <div class="col-sm-3">
-        <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
+        <nav id="toc" data-toggle="toc"></nav>
       </div>
       <!-- main content area -->
       <div class="col-sm-9">
@@ -136,9 +136,9 @@ nav[data-toggle='toc'] {
 
 /* small screens */
 @media (max-width: 768px) {
-  /* override the Affix plugin so that the navigation isn't sticky */
-  nav.affix[data-toggle='toc'] {
-    position: static;
+  /* override stickyness so that the navigation does not follow scrolling */
+  nav[data-toggle='toc'] {
+    position: relative;
   }
 
   /* PICK ONE */

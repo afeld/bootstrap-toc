@@ -59,8 +59,6 @@ nav[data-toggle='toc'] .nav-link.active + ul {
   display: block;
 }
 
-nav[data-toggle='toc'] {
+nav[data-toggle='toc'].sticky-top {
   top: 42px;
-  position: -webkit-sticky;
-  position: sticky;
 }

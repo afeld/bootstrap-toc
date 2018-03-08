@@ -37,7 +37,7 @@ Create a `<nav>` element with a `data-toggle="toc"` attribute.
 <nav id="toc" data-toggle="toc"></nav>
 ```
 
-You can put this wherever on the page you like. Since this plugin leverages Bootstrap's [Scrollspy](http://getbootstrap.com/javascript/#scrollspy) plugin, you will also need to add a couple attributes to the `<body>`:
+You can put this wherever on the page you like. Since this plugin leverages Bootstrap's [Scrollspy](https://getbootstrap.com/docs/4.0/components/scrollspy/) plugin, you will also need to add a couple attributes to the `<body>`:
 
 ```html
 <body data-spy="scroll" data-target="#toc">
@@ -64,7 +64,7 @@ $(function() {
 });
 ```
 
-See the [Scrollspy](http://getbootstrap.com/javascript/#scrollspy) documentation for more information about initializing that plugin.
+See the [Scrollspy](https://getbootstrap.com/docs/4.0/components/scrollspy/) documentation for more information about initializing that plugin.
 
 #### Options
 

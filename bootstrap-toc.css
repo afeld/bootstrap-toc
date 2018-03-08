@@ -58,7 +58,3 @@ nav[data-toggle='toc'] .nav .nav > li > .active:focus {
 nav[data-toggle='toc'] .nav-link.active + ul {
   display: block;
 }
-
-nav[data-toggle='toc'].sticky-top {
-  top: 42px;
-}

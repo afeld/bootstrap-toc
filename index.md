@@ -134,9 +134,12 @@ You may also want to include this in your stylesheet:
 {% include layout.css %}
 ```
 
+ _Note: if you're upgrading from version <= 0.4.1 to 1.0.0+, these have changed._
+
 ## Examples
 
 * [Advanced JS course syllabus](https://advanced-js.github.io/syllabus/)
+* [aws-http](https://rishikeshdarandale.github.io/aws-http/)
 * [OpenStreetMap Carto Tutorials](https://ircama.github.io/osm-carto-tutorials/tile-server-ubuntu/)
 
 ## See also

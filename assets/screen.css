@@ -1,3 +1,8 @@
+---
+---
+
+{% include layout.css %}
+
 .right .github-fork-ribbon {
   background-color: #563d7c;
 }
@@ -31,16 +36,6 @@ footer {
 
 /* small screens */
 @media (max-width: 768px) {
-  /* override the Affix plugin so that the navigation isn't sticky */
-  nav.affix[data-toggle='toc'] {
-    position: static;
-  }
-
-  /* display the second-level nav */
-  nav[data-toggle='toc'] .nav .nav {
-    display: block;
-  }
-
   .hint {
     top: 0;
   }

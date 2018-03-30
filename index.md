@@ -8,24 +8,24 @@ permalink: /
 
 [![Build Status](https://travis-ci.org/afeld/bootstrap-toc.svg?branch=gh-pages)](https://travis-ci.org/afeld/bootstrap-toc)
 
-This [Bootstrap](http://getbootstrap.com/) plugin allows you to generate a table of contents for any page, based on the heading elements (`<h1>`, `<h2>`, etc.). It is meant to emulate the sidebar you see on [the Bootstrap documentation site](http://getbootstrap.com/css/).
+This [Bootstrap](http://getbootstrap.com/) plugin allows you to generate a table of contents for any page, based on the heading elements (`<h1>`, `<h2>`, etc.). It is meant to emulate the sidebar you see on [the Bootstrap v3 documentation site](https://getbootstrap.com/docs/3.3/css/).
 
 This page is an example of the plugin in action – the table of contents you see on the left (or top, on mobile) was automatically generated, without having to manually keep all of the navigation items in sync with the headings.
 
 ## Usage
 
-On top of the normal Bootstrap setup (see their [Getting Started](http://getbootstrap.com/getting-started/) guide), you will need to include the Bootstrap Table of Contents stylesheet and JavaScript file.
+1. Set up Bootstrap v4.
+    * For Bootstrap v3, see [the older instructions](https://github.com/afeld/bootstrap-toc/blob/v0.4.1/index.md#usage).
+1. Include the Bootstrap Table of Contents stylesheet and JavaScript file. [Unminified versions](https://github.com/afeld/bootstrap-toc/tree/gh-pages/dist) are also available.
 
-```html
-<!-- add after bootstrap.min.css -->
-<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
-<!-- add after bootstrap.min.js -->
-<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
-```
+    ```html
+    <!-- add after bootstrap.min.css -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+    <!-- add after bootstrap.min.js -->
+    <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+    ```
 
-[Unminified versions](https://github.com/afeld/bootstrap-toc/tree/gh-pages/dist) are also available.
-
-Next, pick one of the two options below.
+1. Pick one of the two options below.
 
 ### Via data attributes
 
@@ -37,7 +37,7 @@ Create a `<nav>` element with a `data-toggle="toc"` attribute.
 <nav id="toc" data-toggle="toc"></nav>
 ```
 
-You can put this wherever on the page you like. Since this plugin leverages Bootstrap's [Scrollspy](http://getbootstrap.com/javascript/#scrollspy) plugin, you will also need to add a couple attributes to the `<body>`:
+You can put this wherever on the page you like. Since this plugin leverages Bootstrap's [Scrollspy](https://getbootstrap.com/docs/4.0/components/scrollspy/) plugin, you will also need to add a couple attributes to the `<body>`:
 
 ```html
 <body data-spy="scroll" data-target="#toc">
@@ -64,7 +64,7 @@ $(function() {
 });
 ```
 
-See the [Scrollspy](http://getbootstrap.com/javascript/#scrollspy) documentation for more information about initializing that plugin.
+See the [Scrollspy](https://getbootstrap.com/docs/4.0/components/scrollspy/) documentation for more information about initializing that plugin.
 
 #### Options
 
@@ -109,7 +109,7 @@ To prevent a particular heading from being added to the table of contents, add a
 
 ## Layout
 
-This plugin isn't opinionated about where it should be placed on the page, but a common use case is to have the table of contents created as a "sticky" sidebar. We will leverage the [Affix](http://getbootstrap.com/javascript/#affix) plugin for this, and wrap the `<nav>` element in a `<div>` with a Bootstrap column class (see information about the [Grid](http://getbootstrap.com/css/#grid)). As an example putting it all together (similar to this page):
+This plugin isn't opinionated about where it should be placed on the page, but a common use case is to have the table of contents created as a ["sticky"](https://getbootstrap.com/docs/4.0/utilities/position/#sticky-top) sidebar.
 
 ```html
 <body data-spy="scroll" data-target="#toc">
@@ -117,7 +117,7 @@ This plugin isn't opinionated about where it should be placed on the page, but a
     <div class="row">
       <!-- sidebar, which will move to the top on a small screen -->
       <div class="col-sm-3">
-        <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
+        <nav id="toc" data-toggle="toc" class="sticky-top"></nav>
       </div>
       <!-- main content area -->
       <div class="col-sm-9">
@@ -131,32 +131,15 @@ This plugin isn't opinionated about where it should be placed on the page, but a
 You may also want to include this in your stylesheet:
 
 ```css
-nav[data-toggle='toc'] {
-  margin-top: 30px;
-}
-
-/* small screens */
-@media (max-width: 768px) {
-  /* override the Affix plugin so that the navigation isn't sticky */
-  nav.affix[data-toggle='toc'] {
-    position: static;
-  }
-
-  /* PICK ONE */
-  /* don't expand nested items, which pushes down the rest of the page when navigating */
-  nav[data-toggle='toc'] .nav .active .nav {
-    display: none;
-  }
-  /* alternatively, if you *do* want the second-level navigation to be shown (as seen on this page on mobile), use this */
-  nav[data-toggle='toc'] .nav .nav {
-    display: block;
-  }
-}
+{% include layout.css %}
 ```
+
+ _Note: if you're upgrading from version <= 0.4.1 to 1.0.0+, these have changed._
 
 ## Examples
 
 * [Advanced JS course syllabus](https://advanced-js.github.io/syllabus/)
+* [aws-http](https://rishikeshdarandale.github.io/aws-http/)
 * [OpenStreetMap Carto Tutorials](https://ircama.github.io/osm-carto-tutorials/tile-server-ubuntu/)
 
 ## See also

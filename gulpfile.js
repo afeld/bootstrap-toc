@@ -12,7 +12,7 @@ gulp.task('clean', function () {
   return del(['dist/*']);
 });
 
-gulp.task('build-css', ['clean'], function() {
+gulp.task('build-css', gulp.series(['clean', function() {
   return gulp.src('bootstrap-toc.css')
     .pipe(template(pkg))
     .pipe(gulp.dest('dist'))
@@ -21,20 +21,22 @@ gulp.task('build-css', ['clean'], function() {
       extname: '.min.css'
     }))
     .pipe(gulp.dest('dist'));
-});
+}]));
 
-gulp.task('build-js', ['clean'], function() {
+gulp.task('build-js', gulp.series(['clean', function() {
   return gulp.src('bootstrap-toc.js')
     .pipe(template(pkg))
     .pipe(gulp.dest('dist'))
     .pipe(uglify({
-      preserveComments: 'license'
+      output: {
+        comments: /^!/
+      }
     }))
     .pipe(rename({
       extname: '.min.js'
     }))
     .pipe(gulp.dest('dist'));
-});
+}]));
 
 gulp.task('js-lint', function () {
   return gulp.src('bootstrap-toc.js')
@@ -53,6 +55,6 @@ gulp.task('watch', function() {
   gulp.watch('test/*', ['test']);
 });
 
-gulp.task('build', ['build-css', 'build-js']);
+gulp.task('build', gulp.parallel(['build-css', 'build-js']));
 
-gulp.task('default', ['build', 'js-lint', 'test']);
+gulp.task('default', gulp.parallel(['build', 'js-lint', 'test']));

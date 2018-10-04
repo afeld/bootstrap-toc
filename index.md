@@ -26,6 +26,7 @@ This page is an example of the plugin in action – the table of contents you se
     ```
 
 1. Pick one of the two options below.
+1. Determine the [layout](#layout).
 
 ### Via data attributes
 

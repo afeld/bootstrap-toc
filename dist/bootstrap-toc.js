@@ -138,6 +138,10 @@
 
     // accepts a jQuery object, or an options object
     init: function(opts) {
+      // If the element has the processed class already, do not build the TOC.
+      if (opts.$nav.hasClass('processed')) {
+        return null;
+      }
       opts = this.helpers.parseOps(opts);
 
       // ensure that the data attribute is in place for styling
@@ -147,6 +151,9 @@
       var topLevel = this.helpers.getTopLevel(opts.$scope);
       var $headings = this.helpers.getHeadings(opts.$scope, topLevel);
       this.helpers.populateNav($topContext, topLevel, $headings);
+
+      // Add a processed class after the TOC has been built.
+      opts.$nav.addClass('processed');
     }
   };
 

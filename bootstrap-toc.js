@@ -3,7 +3,7 @@
  * Copyright 2015 Aidan Feldman
  * Licensed under MIT (https://github.com/afeld/bootstrap-toc/blob/gh-pages/LICENSE.md) */
 (function($) {
-  'use strict';
+  "use strict";
 
   window.Toc = {
     helpers: {
@@ -12,12 +12,18 @@
         // http://danielnouri.org/notes/2011/03/14/a-jquery-find-that-also-finds-the-root-element/
         // http://stackoverflow.com/a/12731439/358804
         var $descendants = $el.find(selector);
-        return $el.filter(selector).add($descendants).filter(':not([data-toc-skip])');
+        return $el
+          .filter(selector)
+          .add($descendants)
+          .filter(":not([data-toc-skip])");
       },
 
       generateUniqueIdBase: function(el) {
         var text = $(el).text();
-        var anchor = text.trim().toLowerCase().replace(/[^A-Za-z0-9]+/g, '-');
+        var anchor = text
+          .trim()
+          .toLowerCase()
+          .replace(/[^A-Za-z0-9]+/g, "-");
         return anchor || el.tagName.toLowerCase();
       },
 
@@ -27,7 +33,7 @@
           var anchor = anchorBase;
           if (i > 0) {
             // add suffix
-            anchor += '-' + i;
+            anchor += "-" + i;
           }
           // check if ID already exists
           if (!document.getElementById(anchor)) {
@@ -58,9 +64,9 @@
 
       generateNavEl: function(anchor, text) {
         var $a = $('<a class="nav-link"></a>');
-        $a.attr('href', '#' + anchor);
+        $a.attr("href", "#" + anchor);
         $a.text(text);
-        var $li = $('<li></li>');
+        var $li = $("<li></li>");
         $li.append($a);
         return $li;
       },
@@ -68,14 +74,14 @@
       generateNavItem: function(headingEl) {
         var anchor = this.generateAnchor(headingEl);
         var $heading = $(headingEl);
-        var text = $heading.data('toc-text') || $heading.text();
+        var text = $heading.data("toc-text") || $heading.text();
         return this.generateNavEl(anchor, text);
       },
 
       // Find the first heading level (`<h1>`, then `<h2>`, etc.) that has more than one element. Defaults to 1 (for `<h1>`).
       getTopLevel: function($scope) {
         for (var i = 1; i <= 6; i++) {
-          var $headings = this.findOrFilter($scope, 'h' + i);
+          var $headings = this.findOrFilter($scope, "h" + i);
           if ($headings.length > 1) {
             return i;
           }
@@ -86,12 +92,12 @@
 
       // returns the elements for the top level, and the next below it
       getHeadings: function($scope, topLevel) {
-        var topSelector = 'h' + topLevel;
+        var topSelector = "h" + topLevel;
 
         var secondaryLevel = topLevel + 1;
-        var secondarySelector = 'h' + secondaryLevel;
+        var secondarySelector = "h" + secondaryLevel;
 
-        return this.findOrFilter($scope, topSelector + ',' + secondarySelector);
+        return this.findOrFilter($scope, topSelector + "," + secondarySelector);
       },
 
       getNavLevel: function(el) {
@@ -141,7 +147,7 @@
       opts = this.helpers.parseOps(opts);
 
       // ensure that the data attribute is in place for styling
-      opts.$nav.attr('data-toggle', 'toc');
+      opts.$nav.attr("data-toggle", "toc");
 
       var $topContext = this.helpers.createChildNavList(opts.$nav);
       var topLevel = this.helpers.getTopLevel(opts.$scope);

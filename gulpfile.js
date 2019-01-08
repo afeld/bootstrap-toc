@@ -1,60 +1,80 @@
-var gulp = require('gulp');
-var del = require('del');
-var template = require('gulp-template');
-var minifyCss = require('gulp-minify-css');
-var rename = require('gulp-rename');
-var uglify = require('gulp-uglify');
-var jshint = require('gulp-jshint');
-var mochaPhantomJS = require('gulp-mocha-phantomjs');
-var pkg = require('./package.json');
+var gulp = require("gulp");
+var del = require("del");
+var template = require("gulp-template");
+var minifyCss = require("gulp-minify-css");
+var rename = require("gulp-rename");
+var uglify = require("gulp-uglify");
+var jshint = require("gulp-jshint");
+var mochaPhantomJS = require("gulp-mocha-phantomjs");
+var pkg = require("./package.json");
 
-gulp.task('clean', function () {
-  return del(['dist/*']);
+gulp.task("clean", function() {
+  return del(["dist/*"]);
 });
 
-gulp.task('build-css', gulp.series(['clean', function() {
-  return gulp.src('bootstrap-toc.css')
-    .pipe(template(pkg))
-    .pipe(gulp.dest('dist'))
-    .pipe(minifyCss({compatibility: 'ie8'}))
-    .pipe(rename({
-      extname: '.min.css'
-    }))
-    .pipe(gulp.dest('dist'));
-}]));
+gulp.task(
+  "build-css",
+  gulp.series([
+    "clean",
+    function() {
+      return gulp
+        .src("bootstrap-toc.css")
+        .pipe(template(pkg))
+        .pipe(gulp.dest("dist"))
+        .pipe(minifyCss({ compatibility: "ie8" }))
+        .pipe(
+          rename({
+            extname: ".min.css"
+          })
+        )
+        .pipe(gulp.dest("dist"));
+    }
+  ])
+);
 
-gulp.task('build-js', gulp.series(['clean', function() {
-  return gulp.src('bootstrap-toc.js')
-    .pipe(template(pkg))
-    .pipe(gulp.dest('dist'))
-    .pipe(uglify({
-      output: {
-        comments: /^!/
-      }
-    }))
-    .pipe(rename({
-      extname: '.min.js'
-    }))
-    .pipe(gulp.dest('dist'));
-}]));
+gulp.task(
+  "build-js",
+  gulp.series([
+    "clean",
+    function() {
+      return gulp
+        .src("bootstrap-toc.js")
+        .pipe(template(pkg))
+        .pipe(gulp.dest("dist"))
+        .pipe(
+          uglify({
+            output: {
+              comments: /^!/
+            }
+          })
+        )
+        .pipe(
+          rename({
+            extname: ".min.js"
+          })
+        )
+        .pipe(gulp.dest("dist"));
+    }
+  ])
+);
 
-gulp.task('js-lint', function () {
-  return gulp.src('bootstrap-toc.js')
+gulp.task("js-lint", function() {
+  return gulp
+    .src("bootstrap-toc.js")
     .pipe(jshint())
-    .pipe(jshint.reporter('default'))
-    .pipe(jshint.reporter('fail'));
+    .pipe(jshint.reporter("default"))
+    .pipe(jshint.reporter("fail"));
 });
 
-gulp.task('test', function () {
-  return gulp.src('test/index.html')
-    .pipe(mochaPhantomJS());
+gulp.task("test", function() {
+  return gulp.src("test/index.html").pipe(mochaPhantomJS());
 });
 
-gulp.task('watch', function() {
-  gulp.watch('bootstrap-toc.js', ['js-lint', 'test']);
-  gulp.watch('test/*', ['test']);
+gulp.task("watch", function() {
+  gulp.watch("bootstrap-toc.js", ["js-lint", "test"]);
+  gulp.watch("test/*", ["test"]);
 });
 
-gulp.task('build', gulp.parallel(['build-css', 'build-js']));
+gulp.task("build", gulp.parallel(["build-css", "build-js"]));
 
-gulp.task('default', gulp.parallel(['build', 'js-lint', 'test']));
+gulp.task("default", gulp.parallel(["build", "js-lint", "test"]));

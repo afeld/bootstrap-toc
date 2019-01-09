@@ -3,6 +3,12 @@
 
 {% include layout.css %}
 
+/* don't wrap inline code */
+p code,
+table code {
+  white-space: nowrap;
+}
+
 .right .github-fork-ribbon {
   background-color: #563d7c;
 }

@@ -21,10 +21,10 @@ This page is an example of the plugin in action – the table of contents you se
    <!-- add after bootstrap.min.css -->
    <link
      rel="stylesheet"
-     href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.0/dist/bootstrap-toc.min.css"
+     href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css"
    />
    <!-- add after bootstrap.min.js -->
-   <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.0/dist/bootstrap-toc.min.js"></script>
+   <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
    ```
 
 1. Pick one of the two options below.

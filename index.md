@@ -90,7 +90,9 @@ All options are optional, unless otherwise indicated.
 | `$scope` | jQuery Object | The element where the search for headings will be limited to, or the list of headings that will be used in the navigation. Defaults to `$(document.body)`. |
 {: .table }
 
-## Headings
+## Customization
+
+### Headings
 
 By default, the plugin chooses the top-level navigation items by searching for headings at the first heading level, then works its way down (`<h1>`, then `<h2>`, etc.) It will stop when it finds the first set of headings where more than one exists at that level. For example:
 
@@ -124,13 +126,9 @@ and the resulting Table of Contents would only contain:
 > * Subsection A
 > * Subsection B
 
-## Customization
-
-The following options can be specified at the heading level via `data-toc-*` attributes.
-
 ### Displayed text
 
-By default, Bootstrap TOC will use the text from the heading element in the table of contents. If you want to customize what is displayed, add a `data-toc-text` attribute with the desired text. For example:
+By default, Bootstrap TOC will use the text from the heading element in the table of contents. If you want to customize what is displayed, add a `data-toc-text` attribute to the heading with the desired text. For example:
 
 ```html
 <h2 data-toc-text="Short text">Longer text</h2>
@@ -140,7 +138,7 @@ displays "Longer text" as the heading, but "Short text" in the sidebar.
 
 ### Skipping
 
-To prevent a particular heading from being added to the table of contents, add a `data-toc-skip` [boolean attribute](https://www.w3.org/TR/2008/WD-html5-20080610/semantics.html#boolean).
+To prevent a particular heading from being added to the table of contents, add a `data-toc-skip` [boolean attribute](https://www.w3.org/TR/2008/WD-html5-20080610/semantics.html#boolean) to the heading.
 
 ```html
 <h2 data-toc-skip>Some heading you don't want in the nav</h2>

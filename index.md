@@ -92,11 +92,37 @@ All options are optional, unless otherwise indicated.
 
 ## Headings
 
-By default, the plugin finds the first heading level (`<h1>`, then `<h2>`, etc.) that has more than one element and defaults to 1 (for `<h1>`). The identified level becomes the top heading and the plugin supports a single nesting level associated to it, including the subsequent heading only. E.g., if the identified top level is `<h1>`, the nested level will be `<h2>`, which is the next below it; if the top level is `<h2>`, the nested one will be `<h3>`. No additional level to the nested one and no previous level to the top one will be shown.
+By default, the plugin chooses the top-level navigation items by searching for headings at the first heading level, then works its way down (`<h1>`, then `<h2>`, etc.) It will stop when it finds the first set of headings where more than one exists at that level. For example:
 
-The plugin allows an option to customize this behavior:
+```html
+<h1>The title</h1>
+<h2>Some sub-title</h2>
+...
+<h3>Section 1</h3>
+<h4>Subsection A</h4>
+...
+<h4>Subsection B</h4>
+...
+<h3>Section 2</h3>
+```
 
-The jQuery object created for the `$scope` [option](#options) can consist of a set of header selectors (in the form *hN,hM,...* where N, M, ... are levels, e.g., `h1,h2,h3`), all of them are searched instead of the first declared one and of its subsequent heading. Example: `$scope: $('h1,h2,h3,h4,h5,h6')` (in this case, all of them are searched and not only `<h2>` and `<h3>` in case `<h2>` is the top level).
+The plugin would see there's only one `<h1>`, then that there's only one `<h2>`, then stop when it sees there's more than one `<h3>`. The identified level becomes the top-level navigation items in the Table of Contents, and any headings under those (the `<h4>`s in this case) would be the second-level navigation.
+
+This behavior can be customized with the `$scope` [option](#options). That jQuery object can be created with one or more selectors to force certain headings to be used.
+
+In the above example, let's say that you wanted the navigation to only contain the Subsections. You could pass:
+
+```javascript
+Toc.init({
+  $scope: $("h4")
+  // ...
+});
+```
+
+and the resulting Table of Contents would only contain:
+
+> * Subsection A
+> * Subsection B
 
 ## Customization
 

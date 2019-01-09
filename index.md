@@ -90,6 +90,14 @@ All options are optional, unless otherwise indicated.
 | `$scope` | jQuery Object | The element where the search for headings will be limited to, or the list of headings that will be used in the navigation. Defaults to `$(document.body)`. |
 {: .table }
 
+## Headings
+
+By default, the plugin finds the first heading level (`<h1>`, then `<h2>`, etc.) that has more than one element and defaults to 1 (for `<h1>`). The identified level becomes the top heading and the plugin supports a single nesting level associated to it, including the subsequent heading only. E.g., if the identified top level is `<h1>`, the nested level will be `<h2>`, which is the next below it; if the top level is `<h2>`, the nested one will be `<h3>`. No additional level to the nested one and no previous level to the top one will be shown.
+
+The plugin allows an option to customize this behavior:
+
+The jQuery object created for the `$scope` [option](#options) can consist of a set of header selectors (in the form *hN,hM,...* where N, M, ... are levels, e.g., `h1,h2,h3`), all of them are searched instead of the first declared one and of its subsequent heading. Example: `$scope: $('h1,h2,h3,h4,h5,h6')` (in this case, all of them are searched and not only `<h2>` and `<h3>` in case `<h2>` is the top level).
+
 ## Customization
 
 The following options can be specified at the heading level via `data-toc-*` attributes.

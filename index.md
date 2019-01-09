@@ -11,7 +11,7 @@ This [Bootstrap](http://getbootstrap.com/) plugin allows you to generate a table
 
 This page is an example of the plugin in action – the table of contents you see on the left (or top, on mobile) was automatically generated, without having to manually keep all of the navigation items in sync with the headings.
 
-IDs are created on the heading elements if they aren't already present. Unicode/non-ASCII characters are supported.
+IDs are created on the heading elements if they aren't already present. Unicode characters are supported. While IDs are added for developer convenience, you'll want to do this on the backend / through your static site generator so that your users can [link to the anchors via URL fragments](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attr-href).
 
 ## Usage
 

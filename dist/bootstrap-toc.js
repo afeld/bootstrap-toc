@@ -102,7 +102,7 @@
       getTopLevel: function($scope) {
         for (var i = 1; i <= 6; i++) {
           var $headings = this.findOrFilter($scope, "h" + i);
-          if ($headings.length > 0) {
+          if ($headings.length > 1) {
             return i;
           }
         }

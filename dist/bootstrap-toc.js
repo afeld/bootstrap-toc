@@ -1,4 +1,4 @@
-b/*!
+/*!
  * Bootstrap Table of Contents v1.0.1 (http://afeld.github.io/bootstrap-toc/)
  * Copyright 2015 Aidan Feldman
  * Licensed under MIT (https://github.com/afeld/bootstrap-toc/blob/gh-pages/LICENSE.md) */

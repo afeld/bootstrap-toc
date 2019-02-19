@@ -1,4 +1,4 @@
-/*!
+b/*!
  * Bootstrap Table of Contents v1.0.1 (http://afeld.github.io/bootstrap-toc/)
  * Copyright 2015 Aidan Feldman
  * Licensed under MIT (https://github.com/afeld/bootstrap-toc/blob/gh-pages/LICENSE.md) */
@@ -93,16 +93,17 @@
         return this.generateNavEl(anchor, text);
       },
 
-      // Find the first heading level (`<h1>`, then `<h2>`, etc.) that has more than one element. Defaults to 1 (for `<h1>`).
+      // Find the first heading level (`<h1>`, then `<h2>`, etc.) that has more than one element. Defaults to 2 (for `<h2>`).
+      // Don't display h1 in the toc and allow displaying only one element.
       getTopLevel: function($scope) {
-        for (var i = 1; i <= 6; i++) {
+        for (var i = 2; i <= 6; i++) {
           var $headings = this.findOrFilter($scope, "h" + i);
-          if ($headings.length > 1) {
+          if ($headings.length >= 1) {
             return i;
           }
         }
 
-        return 1;
+        return 2;
       },
 
       // returns the elements for the top level, and the next below it

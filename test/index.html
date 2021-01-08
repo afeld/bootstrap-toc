@@ -8,7 +8,6 @@
     <div id="mocha"></div>
     <div id="mocha-fixture">foo</div>
 
-    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../node_modules/expect.js/index.js"></script>
     <script src="../node_modules/mocha/mocha.js"></script>
 
@@ -19,7 +18,6 @@
     <script src="toc-test.js"></script>
     <script>
       mocha.checkLeaks();
-      mocha.globals(["jQuery"]);
       mocha.run();
     </script>
   </body>

@@ -1,7 +1,7 @@
-var $fixture = $("#mocha-fixture");
+var fixture = document.getElementById("mocha-fixture");
 
 afterEach(function() {
-  $fixture.empty();
+  fixture.innerHTML = "";
 });
 
 describe("Toc", function() {
@@ -56,7 +56,8 @@ describe("Toc", function() {
       });
 
       it("handles unicode", function() {
-        var el = $("<h1>💃 🕺</h1>")[0];
+        var el = document.createElement("h1");
+        el.innerText = "💃 🕺";
         var base = Toc.helpers.generateUniqueIdBase(el);
         expect(base).to.eql("💃-🕺");
       });
@@ -70,7 +71,7 @@ describe("Toc", function() {
       });
 
       it("adds a suffix when there's an existing element with that tag", function() {
-        $fixture.append('<h1 id="h1"></h1>');
+        fixture.innerHTML = '<h1 id="h1"></h1>';
 
         var el = document.createElement("h1");
         var base = Toc.helpers.generateUniqueId(el);
@@ -110,21 +111,21 @@ describe("Toc", function() {
   });
 
   describe(".init()", function() {
-    var $nav;
+    var nav;
     beforeEach(function() {
-      $nav = $("<nav>");
-      $fixture.append($nav);
+      nav = document.createElement("nav");
+      fixture.appendChild(nav);
     });
 
     it("handles single-level headings", function() {
-      $fixture.append("<h1>H1</h1>" + "<h1>H1</h1>" + "<h1>H1</h1>");
+      fixture.innerHTML = "<h1>H1</h1>" + "<h1>H1</h1>" + "<h1>H1</h1>";
 
       Toc.init({
-        $nav: $nav,
-        $scope: $fixture
+        $nav: $(nav),
+        $scope: $(fixture)
       });
 
-      expect($nav.html()).to.eql(
+      expect(nav.innerHTML).to.eql(
         '<ul class="nav navbar-nav">' +
           "<li>" +
           '<a class="nav-link" href="#h1">H1</a>' +
@@ -140,16 +141,15 @@ describe("Toc", function() {
     });
 
     it("ignores headings with a data-toc-skip attribute", function() {
-      $fixture.append(
-        "<h1>H1</h1>" + "<h1 data-toc-skip>H1</h1>" + "<h1>H1</h1>"
-      );
+      fixture.innerHTML =
+        "<h1>H1</h1>" + "<h1 data-toc-skip>H1</h1>" + "<h1>H1</h1>";
 
       Toc.init({
-        $nav: $nav,
-        $scope: $fixture
+        $nav: $(nav),
+        $scope: $(fixture)
       });
 
-      expect($nav.html()).to.eql(
+      expect(nav.innerHTML).to.eql(
         '<ul class="nav navbar-nav">' +
           "<li>" +
           '<a class="nav-link" href="#h1">H1</a>' +
@@ -162,20 +162,19 @@ describe("Toc", function() {
     });
 
     it("handles nested headings", function() {
-      $fixture.append(
+      fixture.innerHTML =
         "<h1>H1</h1>" +
-          "<h2>H2</h2>" +
-          "<h3>H3</h3>" +
-          "<h4>H4</h4>" +
-          "<h2>H2-1</h2>"
-      );
+        "<h2>H2</h2>" +
+        "<h3>H3</h3>" +
+        "<h4>H4</h4>" +
+        "<h2>H2-1</h2>";
 
       Toc.init({
-        $nav: $nav,
-        $scope: $fixture
+        $nav: $(nav),
+        $scope: $(fixture)
       });
 
-      expect($nav.html()).to.eql(
+      expect(nav.innerHTML).to.eql(
         '<ul class="nav navbar-nav">' +
           "<li>" +
           '<a class="nav-link" href="#h2">H2</a>' +
@@ -193,16 +192,19 @@ describe("Toc", function() {
     });
 
     it("accepts a list of headings as the $scope", function() {
-      var $h1 = $("<h1>H1</h1>");
-      var $h2 = $("<h2>H2</h2>");
-      $fixture.append($h1, $h2);
+      var h1 = document.createElement("h1");
+      h1.innerText = "H1";
+      var h2 = document.createElement("h2");
+      h2.innerText = "H2";
+      fixture.appendChild(h1);
+      fixture.appendChild(h2);
 
       Toc.init({
-        $nav: $nav,
-        $scope: $h1
+        $nav: $(nav),
+        $scope: $(h1)
       });
 
-      expect($nav.html()).to.eql(
+      expect(nav.innerHTML).to.eql(
         '<ul class="nav navbar-nav">' +
           "<li>" +
           '<a class="nav-link" href="#h1">H1</a>' +

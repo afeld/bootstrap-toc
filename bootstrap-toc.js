@@ -19,7 +19,7 @@
       },
 
       generateUniqueIdBase: function(el) {
-        var text = $(el).text();
+        var text = el.textContent;
 
         // adapted from
         // https://github.com/bryanbraun/anchorjs/blob/65fede08d0e4a705f72f1e7e6284f643d5ad3cf3/anchor.js#L237-L257
@@ -78,18 +78,19 @@
       },
 
       generateNavEl: function(anchor, text) {
-        var $a = $('<a class="nav-link"></a>');
-        $a.attr("href", "#" + anchor);
-        $a.text(text);
+        var a = document.createElement("a");
+        a.classList.add("nav-link");
+        a.setAttribute("href", "#" + anchor);
+        a.innerText = text;
         var $li = $("<li></li>");
-        $li.append($a);
+        $li.append(a);
         return $li;
       },
 
       generateNavItem: function(headingEl) {
         var anchor = this.generateAnchor(headingEl);
-        var $heading = $(headingEl);
-        var text = $heading.data("toc-text") || $heading.text();
+        var text =
+          headingEl.getAttribute("data-toc-text") || headingEl.textContent;
         return this.generateNavEl(anchor, text);
       },
 

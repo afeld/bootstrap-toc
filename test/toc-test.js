@@ -80,24 +80,22 @@ describe("Toc", function() {
 
     describe(".getTopLevel()", function() {
       it("returns 1 by default", function() {
-        var $scope = $("<div></div>");
-        var level = Toc.helpers.getTopLevel($scope);
+        var scope = document.createElement("div");
+        var level = Toc.helpers.getTopLevel(scope);
         expect(level).to.eql(1);
       });
 
       it("returns the first level with more than one element", function() {
-        var $scope = $(
-          "<div>" +
-            "<h1></h1>" +
-            "<h2></h2>" +
-            "<h3></h3>" +
-            "<h4></h4>" +
-            "<h5></h5>" +
-            "<h6></h6>" +
-            "<h6></h6>" +
-            "</div>"
-        );
-        var level = Toc.helpers.getTopLevel($scope);
+        var scope = document.createElement("div");
+        scope.innerHTML =
+          "<h1></h1>" +
+          "<h2></h2>" +
+          "<h3></h3>" +
+          "<h4></h4>" +
+          "<h5></h5>" +
+          "<h6></h6>" +
+          "<h6></h6>";
+        var level = Toc.helpers.getTopLevel(scope);
         expect(level).to.eql(6);
       });
     });

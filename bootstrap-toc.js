@@ -8,14 +8,30 @@
   window.Toc = {
     helpers: {
       // return all matching elements in the set, or their descendants
-      findOrFilter: function($el, selector) {
-        // http://danielnouri.org/notes/2011/03/14/a-jquery-find-that-also-finds-the-root-element/
-        // http://stackoverflow.com/a/12731439/358804
-        var $descendants = $el.find(selector);
-        return $el
-          .filter(selector)
-          .add($descendants)
-          .filter(":not([data-toc-skip])");
+      findOrFilter: function(el, selector) {
+        var parent = el.parentElement || el;
+        var descendants = parent.querySelectorAll(selector);
+        var arr = [];
+
+        for (var i = 0; i < descendants.length; i++) {
+          var descendent = descendants[i];
+          if (
+            descendent === el ||
+            (descendent.parentElement !== el.parentElement &&
+              descendent.getAttribute("data-toc-skip") === null)
+          ) {
+            arr.push(descendent);
+          }
+        }
+
+        return arr.filter(function(item) {
+          if (item === el) return true;
+          while (item !== null) {
+            if (item.parentElement === el) return true;
+            item = item.parentElement;
+          }
+          return false;
+        });
       },
 
       generateUniqueIdBase: function(el) {
@@ -97,10 +113,10 @@
       },
 
       // Find the first heading level (`<h1>`, then `<h2>`, etc.) that has more than one element. Defaults to 1 (for `<h1>`).
-      getTopLevel: function($scope) {
+      getTopLevel: function(scope) {
         for (var i = 1; i <= 6; i++) {
-          var $headings = this.findOrFilter($scope, "h" + i);
-          if ($headings.length > 1) {
+          var headings = this.findOrFilter(scope, "h" + i);
+          if (headings.length > 1) {
             return i;
           }
         }
@@ -109,25 +125,25 @@
       },
 
       // returns the elements for the top level, and the next below it
-      getHeadings: function($scope, topLevel) {
+      getHeadings: function(scope, topLevel) {
         var topSelector = "h" + topLevel;
 
         var secondaryLevel = topLevel + 1;
         var secondarySelector = "h" + secondaryLevel;
 
-        return this.findOrFilter($scope, topSelector + "," + secondarySelector);
+        return this.findOrFilter(scope, topSelector + "," + secondarySelector);
       },
 
       getNavLevel: function(el) {
         return parseInt(el.tagName.charAt(1), 10);
       },
 
-      populateNav: function(topContext, topLevel, $headings) {
+      populateNav: function(topContext, topLevel, headings) {
         var context = topContext;
         var prevNav;
 
         var helpers = this;
-        $headings.each(function(i, el) {
+        headings.forEach(function(el) {
           var newNav = helpers.generateNavItem(el);
           var navLevel = helpers.getNavLevel(el);
 
@@ -168,9 +184,9 @@
       opts.$nav.attr("data-toggle", "toc");
 
       var topContext = this.helpers.createChildNavList(opts.$nav[0]);
-      var topLevel = this.helpers.getTopLevel(opts.$scope);
-      var $headings = this.helpers.getHeadings(opts.$scope, topLevel);
-      this.helpers.populateNav(topContext, topLevel, $headings);
+      var topLevel = this.helpers.getTopLevel(opts.$scope[0]);
+      var headings = this.helpers.getHeadings(opts.$scope[0], topLevel);
+      this.helpers.populateNav(topContext, topLevel, headings);
     }
   };
 

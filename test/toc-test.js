@@ -8,21 +8,24 @@ describe("Toc", function() {
   describe(".helpers", function() {
     describe(".generateNavItem()", function() {
       it("uses text within the element by default", function() {
-        var heading = $("<h1>foo</h1>")[0];
-        var $navItem = Toc.helpers.generateNavItem(heading);
-        expect($navItem.text()).to.eql("foo");
+        var heading = document.createElement("h1");
+        heading.innerText = "foo";
+        var navItem = Toc.helpers.generateNavItem(heading);
+        expect(navItem.textContent).to.eql("foo");
       });
 
       it("uses text specified as a data-toc-text attribute", function() {
-        var heading = $('<h1 data-toc-text="foo">bar</h1>')[0];
-        var $navItem = Toc.helpers.generateNavItem(heading);
-        expect($navItem.text()).to.eql("foo");
+        var heading = document.createElement("h1");
+        heading.innerText = "bar";
+        heading.setAttribute("data-toc-text", "foo");
+        var navItem = Toc.helpers.generateNavItem(heading);
+        expect(navItem.textContent).to.eql("foo");
       });
 
       it("keeps the text from within the element escaped", function() {
         var heading = document.createElement("h1");
         heading.innerText = "&lt;script&gt;foo&lt;/script&gt;";
-        var navItem = Toc.helpers.generateNavItem(heading)[0];
+        var navItem = Toc.helpers.generateNavItem(heading);
         expect(navItem.textContent).to.eql("&lt;script&gt;foo&lt;/script&gt;");
       });
 
@@ -33,8 +36,8 @@ describe("Toc", function() {
           "&lt;script&gt;foo&lt;/script&gt;"
         );
         heading.innerText = "bar";
-        var $navItem = Toc.helpers.generateNavItem(heading);
-        expect($navItem.text()).to.eql("&lt;script&gt;foo&lt;/script&gt;");
+        var navItem = Toc.helpers.generateNavItem(heading);
+        expect(navItem.textContent).to.eql("&lt;script&gt;foo&lt;/script&gt;");
       });
     });
 

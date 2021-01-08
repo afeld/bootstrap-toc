@@ -122,8 +122,8 @@
         return parseInt(el.tagName.charAt(1), 10);
       },
 
-      populateNav: function($topContext, topLevel, $headings) {
-        var $context = $topContext;
+      populateNav: function(topContext, topLevel, $headings) {
+        var context = topContext;
         var prevNav;
 
         var helpers = this;
@@ -131,16 +131,16 @@
           var newNav = helpers.generateNavItem(el);
           var navLevel = helpers.getNavLevel(el);
 
-          // determine the proper $context
+          // determine the proper context
           if (navLevel === topLevel) {
             // use top level
-            $context = $topContext;
-          } else if (prevNav && $context === $topContext) {
+            context = topContext;
+          } else if (prevNav && context === topContext) {
             // create a new level of the tree and switch to it
-            $context = $(helpers.createChildNavList(prevNav));
-          } // else use the current $context
+            context = helpers.createChildNavList(prevNav);
+          } // else use the current context
 
-          $context.append(newNav);
+          context.appendChild(newNav);
 
           prevNav = newNav;
         });
@@ -167,10 +167,10 @@
       // ensure that the data attribute is in place for styling
       opts.$nav.attr("data-toggle", "toc");
 
-      var $topContext = $(this.helpers.createChildNavList(opts.$nav[0]));
+      var topContext = this.helpers.createChildNavList(opts.$nav[0]);
       var topLevel = this.helpers.getTopLevel(opts.$scope);
       var $headings = this.helpers.getHeadings(opts.$scope, topLevel);
-      this.helpers.populateNav($topContext, topLevel, $headings);
+      this.helpers.populateNav(topContext, topLevel, $headings);
     }
   };
 

@@ -121,8 +121,8 @@ describe("Toc", function() {
       fixture.innerHTML = "<h1>H1</h1>" + "<h1>H1</h1>" + "<h1>H1</h1>";
 
       Toc.init({
-        $nav: $(nav),
-        $scope: $(fixture)
+        nav: nav,
+        scope: fixture
       });
 
       expect(nav.innerHTML).to.eql(
@@ -145,8 +145,8 @@ describe("Toc", function() {
         "<h1>H1</h1>" + "<h1 data-toc-skip>H1</h1>" + "<h1>H1</h1>";
 
       Toc.init({
-        $nav: $(nav),
-        $scope: $(fixture)
+        nav: nav,
+        scope: fixture
       });
 
       expect(nav.innerHTML).to.eql(
@@ -170,8 +170,8 @@ describe("Toc", function() {
         "<h2>H2-1</h2>";
 
       Toc.init({
-        $nav: $(nav),
-        $scope: $(fixture)
+        nav: nav,
+        scope: fixture
       });
 
       expect(nav.innerHTML).to.eql(
@@ -191,7 +191,7 @@ describe("Toc", function() {
       );
     });
 
-    it("accepts a list of headings as the $scope", function() {
+    it("accepts a list of headings as the scope", function() {
       var h1 = document.createElement("h1");
       h1.innerText = "H1";
       var h2 = document.createElement("h2");
@@ -200,8 +200,8 @@ describe("Toc", function() {
       fixture.appendChild(h2);
 
       Toc.init({
-        $nav: $(nav),
-        $scope: $(h1)
+        nav: nav,
+        scope: h1
       });
 
       expect(nav.innerHTML).to.eql(

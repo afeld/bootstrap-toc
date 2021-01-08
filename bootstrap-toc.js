@@ -164,28 +164,28 @@
 
       parseOps: function(arg) {
         var opts;
-        if (arg.jquery) {
+        if (arg instanceof Element) {
           opts = {
-            $nav: arg
+            nav: arg
           };
         } else {
           opts = arg;
         }
-        opts.$scope = opts.$scope || $(document.body);
+        opts.scope = opts.scope || document.body;
         return opts;
       }
     },
 
-    // accepts a jQuery object, or an options object
+    // accepts an Element object, or an options object
     init: function(opts) {
       opts = this.helpers.parseOps(opts);
 
       // ensure that the data attribute is in place for styling
-      opts.$nav.attr("data-toggle", "toc");
+      opts.nav.setAttribute("data-toggle", "toc");
 
-      var topContext = this.helpers.createChildNavList(opts.$nav[0]);
-      var topLevel = this.helpers.getTopLevel(opts.$scope[0]);
-      var headings = this.helpers.getHeadings(opts.$scope[0], topLevel);
+      var topContext = this.helpers.createChildNavList(opts.nav);
+      var topLevel = this.helpers.getTopLevel(opts.scope);
+      var headings = this.helpers.getHeadings(opts.scope, topLevel);
       this.helpers.populateNav(topContext, topLevel, headings);
     }
   };

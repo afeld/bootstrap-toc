@@ -2,7 +2,7 @@
  * Bootstrap Table of Contents v<%= version %> (http://afeld.github.io/bootstrap-toc/)
  * Copyright 2015 Aidan Feldman
  * Licensed under MIT (https://github.com/afeld/bootstrap-toc/blob/gh-pages/LICENSE.md) */
-(function($) {
+(function() {
   "use strict";
 
   window.Toc = {
@@ -190,10 +190,18 @@
     }
   };
 
-  $(function() {
-    $('nav[data-toggle="toc"]').each(function(i, el) {
-      var $nav = $(el);
-      Toc.init($nav);
-    });
+  function ready(fn) {
+    if (document.readyState !== "loading") {
+      fn();
+    } else {
+      document.addEventListener("DOMContentLoaded", fn);
+    }
+  }
+
+  ready(function() {
+    var navs = document.querySelectorAll('nav[data-toggle="toc"]');
+    for (var i = 0; i < navs.length; i++) {
+      Toc.init(navs[i]);
+    }
   });
-})(jQuery);
+})();

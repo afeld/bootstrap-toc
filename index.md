@@ -5,6 +5,8 @@ permalink: /
 
 # Table of Contents plugin for Bootstrap
 
+***This plugin is no longer maintained. For an alternative, see [Tocbot](https://tscanlin.github.io/tocbot/).***
+
 [![Build Status](https://travis-ci.org/afeld/bootstrap-toc.svg?branch=gh-pages)](https://travis-ci.org/afeld/bootstrap-toc)
 
 This [Bootstrap](http://getbootstrap.com/) plugin allows you to generate a table of contents for any page, based on the heading elements (`<h1>`, `<h2>`, etc.). It is meant to emulate the sidebar you see on [the Bootstrap v3 documentation site](https://getbootstrap.com/docs/3.3/css/).

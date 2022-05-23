@@ -15,9 +15,9 @@
       />
     <![endif]-->
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
     <link
@@ -42,18 +42,18 @@
       crossorigin="anonymous"
     ></script>
     <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
     ></script>
     <script src="{{ site.baseurl }}/bootstrap-toc.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
     <script type="text/javascript">
-      (function(i, s, o, g, r, a, m) {
+      (function (i, s, o, g, r, a, m) {
         i["GoogleAnalyticsObject"] = r;
         (i[r] =
           i[r] ||
-          function() {
+          function () {
             (i[r].q = i[r].q || []).push(arguments);
           }),
           (i[r].l = 1 * new Date());
@@ -74,12 +74,12 @@
 
       hljs.initHighlightingOnLoad();
 
-      $(function() {
+      $(function () {
         $("#toc").append('<div class="hint">(creates this)</div>');
       });
     </script>
   </head>
-  <body data-spy="scroll" data-target="#toc">
+  <body data-bs-spy="scroll" data-target="#toc">
     <div class="github-fork-ribbon-wrapper right">
       <div class="github-fork-ribbon">
         <a href="https://github.com/afeld/bootstrap-toc">Fork me on GitHub</a>
@@ -101,7 +101,7 @@
               >Follow @aidanfeldman</a
             >
             <script>
-              !(function(d, s, id) {
+              !(function (d, s, id) {
                 var js,
                   fjs = d.getElementsByTagName(s)[0],
                   p = /^http:/.test(d.location) ? "http" : "https";

@@ -15,7 +15,8 @@ IDs are created on the heading elements if they aren't already present. Unicode 
 
 ## Usage
 
-1. Set up Bootstrap v4 or Bootstrap v5
+1. [Set up jQuery](https://jquery.com/download/)
+1. Set up [Bootstrap v4](https://getbootstrap.com/docs/4.0/getting-started/download/) or [Bootstrap v5](https://getbootstrap.com/docs/5.0/getting-started/download/)
    - For Bootstrap v3, see [the older instructions](https://github.com/afeld/bootstrap-toc/blob/v0.4.1/index.md#usage).
 1. Include the Bootstrap Table of Contents stylesheet and JavaScript file. [Unminified versions](https://github.com/afeld/bootstrap-toc/tree/gh-pages/dist) are also available.
 
@@ -25,7 +26,7 @@ IDs are created on the heading elements if they aren't already present. Unicode 
      rel="stylesheet"
      href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css"
    />
-   <!-- add after bootstrap.min.js -->
+   <!-- add after bootstrap.min.js or bootstrap.bundle.min.js -->
    <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
    ```
 
@@ -45,15 +46,16 @@ Create a `<nav>` element with a `data-toggle="toc"` attribute.
 You can put this wherever on the page you like. Since this plugin leverages Bootstrap's Scrollspy plugin, you will also need to add a couple attributes to the `<body>`:
 
 Bootstrap v4 [Scrollspy](https://getbootstrap.com/docs/4.0/components/scrollspy/)
+
 ```html
 <body data-spy="scroll" data-target="#toc"></body>
 ```
 
 Bootstrap v5 [Scrollspy](https://getbootstrap.com/docs/5.0/components/scrollspy/)
+
 ```html
 <body data-bs-spy="scroll" data-bs-target="#toc"></body>
 ```
-
 
 ### Via JavaScript
 
@@ -66,12 +68,12 @@ If you prefer to create your navigation element another way (e.g. within single-
 ```
 
 ```javascript
-$(function() {
+$(function () {
   var navSelector = "#toc";
   var $myNav = $(navSelector);
   Toc.init($myNav);
   $("body").scrollspy({
-    target: navSelector
+    target: navSelector,
   });
 });
 ```
@@ -84,7 +86,7 @@ When calling `Toc.init()`, you can either pass in the jQuery object for the `<na
 
 ```javascript
 Toc.init({
-  $nav: $("#myNav")
+  $nav: $("#myNav"),
   // ...
 });
 ```
@@ -95,6 +97,7 @@ All options are optional, unless otherwise indicated.
 | -------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `$nav`   | jQuery Object | (required) The element that the navigation will be created in.                                                                                             |
 | `$scope` | jQuery Object | The element where the search for headings will be limited to, or the list of headings that will be used in the navigation. Defaults to `$(document.body)`. |
+
 {: .table }
 
 ## Customization
@@ -123,15 +126,15 @@ In the above example, let's say that you wanted the navigation to only contain t
 
 ```javascript
 Toc.init({
-  $scope: $("h4")
+  $scope: $("h4"),
   // ...
 });
 ```
 
 and the resulting Table of Contents would only contain:
 
-> * Subsection A
-> * Subsection B
+> - Subsection A
+> - Subsection B
 
 ### Displayed text
 

@@ -15,7 +15,7 @@ IDs are created on the heading elements if they aren't already present. Unicode 
 
 ## Usage
 
-1. Set up Bootstrap v4.
+1. Set up Bootstrap v4 or Bootstrap v5
    - For Bootstrap v3, see [the older instructions](https://github.com/afeld/bootstrap-toc/blob/v0.4.1/index.md#usage).
 1. Include the Bootstrap Table of Contents stylesheet and JavaScript file. [Unminified versions](https://github.com/afeld/bootstrap-toc/tree/gh-pages/dist) are also available.
 
@@ -42,11 +42,18 @@ Create a `<nav>` element with a `data-toggle="toc"` attribute.
 <nav id="toc" data-toggle="toc"></nav>
 ```
 
-You can put this wherever on the page you like. Since this plugin leverages Bootstrap's [Scrollspy](https://getbootstrap.com/docs/4.0/components/scrollspy/) plugin, you will also need to add a couple attributes to the `<body>`:
+You can put this wherever on the page you like. Since this plugin leverages Bootstrap's Scrollspy plugin, you will also need to add a couple attributes to the `<body>`:
 
+Bootstrap v4 [Scrollspy](https://getbootstrap.com/docs/4.0/components/scrollspy/)
 ```html
 <body data-spy="scroll" data-target="#toc"></body>
 ```
+
+Bootstrap v5 [Scrollspy](https://getbootstrap.com/docs/5.0/components/scrollspy/)
+```html
+<body data-bs-spy="scroll" data-bs-target="#toc"></body>
+```
+
 
 ### Via JavaScript
 
